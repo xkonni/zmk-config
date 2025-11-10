@@ -1,0 +1,74 @@
+name: Build and release Piantor Pro BT firmware
+
+on:
+  workflow_dispatch:
+  push:
+    paths:
+      - 'boards/arm/piantor_pro_bt/**'
+      - 'config/piantor_pro_bt.*'
+      - 'build_piantor.yaml'
+      - 'config/west.yml'
+      - 'zephyr/**'
+
+jobs:
+  draw:
+    name: Draw Piantor Keymap
+    uses: caksoylar/keymap-drawer/.github/workflows/draw-zmk.yml@main
+    if: github.ref == 'refs/heads/main'
+    permissions:
+      contents: read
+    with:
+      destination: artifact
+      artifact_name: piantor-keymap
+      fail_on_error: true
+      keymap_patterns: 'config/piantor_pro_bt.keymap'
+  build:
+    name: Build Piantor Pro BT
+    needs: draw
+    uses: zmkfirmware/zmk/.github/workflows/build-user-config.yml@main
+    with:
+      build_matrix_path: build_piantor.yaml
+      archive_name: piantor-firmware
+  release:
+    name: Release Piantor Pro BT
+    needs: [build, draw]
+    if: success() && github.ref == 'refs/heads/main'
+    runs-on: ubuntu-latest
+    steps:
+      - name: Download artifacts
+        uses: actions/download-artifact@v4
+        with:
+          name: piantor-firmware
+          path: ./artifacts
+      - name: Download keymap artifact
+        uses: actions/download-artifact@v4
+        with:
+          name: piantor-keymap
+          path: ./keymap_artifacts
+      - name: Generate build info
+        id: info
+        run: |
+          echo "timestamp=$(date +'%Y-%m-%d %H:%M:%S UTC')" >> $GITHUB_OUTPUT
+          echo "short_sha=${GITHUB_SHA:0:7}" >> $GITHUB_OUTPUT
+      - name: Delete existing tag
+        uses: dev-drprasad/delete-tag-and-release@v1.0
+        with:
+          tag_name: latest-piantor
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+        continue-on-error: true
+      - name: Create release
+        uses: softprops/action-gh-release@v1
+        with:
+          tag_name: latest-piantor
+          name: Piantor Pro BT Latest Firmware
+          body: |
+            🔁 **Piantor Pro BT Build**
+            Commit: ${{ steps.info.outputs.short_sha }}
+            Built: ${{ steps.info.outputs.timestamp }}
+            Install: flash left/right .uf2 files.
+            Keymap PNG: Download from release assets
+          files: |
+            ./artifacts/**/*.uf2
+            ./keymap_artifacts/**/*.svg
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
