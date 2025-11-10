@@ -45,6 +45,16 @@ jobs:
         with:
           name: eyelash-sofle-keymap
           path: ./keymap_artifacts
+      - name: Convert keymap SVG to PNG
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y --no-install-recommends librsvg2-bin
+          for f in ./keymap_artifacts/*.svg; do
+            [ -f "$f" ] || continue
+            png="${f%.svg}.png"
+            rsvg-convert "$f" -o "$png"
+            echo "Converted $f -> $png"
+          done
       - name: Generate build info
         id: info
         run: |
@@ -69,6 +79,6 @@ jobs:
             Keymap PNG: Download from release assets
           files: |
             ./artifacts/**/*.uf2
-            ./keymap_artifacts/**/*.svg
+            ./keymap_artifacts/**/*.png
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
