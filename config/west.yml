@@ -4,6 +4,8 @@ manifest:
       url-base: https://github.com/zmkfirmware
     - name: infely
       url-base: https://github.com/infely
+    - name: xkonni
+      url-base: https://github.com/xkonni
   projects:
     - name: zmk
       remote: zmkfirmware
@@ -11,6 +13,9 @@ manifest:
       import: app/west.yml
     - name: nice-view-battery
       remote: infely
+      revision: main
+    - name: nice-view-custom
+      remote: xkonni
       revision: main
   self:
     path: config
