@@ -3,7 +3,7 @@ include:
   - board: eyelash_sofle_left
     shield: nice_view
     snippet: studio-rpc-usb-uart
-    cmake-args: -DCONFIG_ZMK_STUDIO=y -DCONFIG_ZMK_STUDIO_LOCKING=n
+    cmake-args: -DCONFIG_ZMK_STUDIO=y
     artifact-name: eyelash-left-nice_view
   - board: eyelash_sofle_right
     shield: nice_view_battery
@@ -12,7 +12,7 @@ include:
   - board: eyelash_sofle_left
     shield: settings_reset
     snippet: studio-rpc-usb-uart
-    cmake-args: -DCONFIG_ZMK_STUDIO=y -DCONFIG_ZMK_STUDIO_LOCKING=n
+    cmake-args: -DCONFIG_ZMK_STUDIO=y
     artifact-name: eyelash-left-settings_reset
   - board: eyelash_sofle_right
     shield: settings_reset
