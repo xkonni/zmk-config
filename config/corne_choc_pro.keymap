@@ -77,6 +77,26 @@
 &kp F12         &kp F1          &kp F2          &kp F3          &kp F4          &kp F5          &trans          &trans          &kp F6          &kp F7          &kp F8          &kp F9          &kp F10         &kp F11
 &trans          &bt BT_SEL 0    &bt BT_SEL 1    &bt BT_SEL 2    &bt BT_SEL 3    &bt BT_SEL 4    &trans          &trans          &mmv MOVE_LEFT  &mmv MOVE_DOWN  &mmv MOVE_UP    &mmv MOVE_RIGHT &none           &studio_unlock
 &trans          &bt BT_DISC 0   &bt BT_DISC 1   &bt BT_DISC 2   &bt BT_DISC 3   &bt BT_DISC 4                                   &mkp LCLK       &mkp MCLK       &mkp RCLK       &none           &none           &bootloader
+                                                &trans          &trans          &trans                                          &trans          &trans          &mo 4
+            >;
+        };
+
+        rgb_layer {
+            display-name = "RGB";
+            bindings = <
+&trans          &rgb_ug RGB_EFR &rgb_ug RGB_TOG &rgb_ug RGB_EFF &trans          &trans          &trans          &trans          &trans          &trans          &trans          &trans          &trans          &trans
+&trans          &rgb_ug RGB_BRD &rgb_ug RGB_TOG &rgb_ug RGB_BRI &trans          &trans          &trans          &trans          &trans          &trans          &trans          &trans          &trans          &trans
+&trans          &rgb_ug RGB_HUD &rgb_ug RGB_TOG &rgb_ug RGB_HUI &trans          &trans                                          &trans          &trans          &trans          &trans          &trans          &trans
+                                                &trans          &trans          &trans                                          &trans          &trans          &trans
+            >;
+        };
+
+        extra_layer_1 {
+            display-name = "EXTRA 1";
+            bindings = <
+&trans          &trans          &trans          &trans          &trans          &trans          &trans          &trans          &trans          &trans          &trans          &trans          &trans          &trans
+&trans          &trans          &trans          &trans          &trans          &trans          &trans          &trans          &trans          &trans          &trans          &trans          &trans          &trans
+&trans          &trans          &trans          &trans          &trans          &trans                                          &trans          &trans          &trans          &trans          &trans          &trans
                                                 &trans          &trans          &trans                                          &trans          &trans          &trans
             >;
         };
@@ -103,26 +123,6 @@
 
         extra_layer_4 {
             display-name = "EXTRA 4";
-            bindings = <
-&trans          &trans          &trans          &trans          &trans          &trans          &trans          &trans          &trans          &trans          &trans          &trans          &trans          &trans
-&trans          &trans          &trans          &trans          &trans          &trans          &trans          &trans          &trans          &trans          &trans          &trans          &trans          &trans
-&trans          &trans          &trans          &trans          &trans          &trans                                          &trans          &trans          &trans          &trans          &trans          &trans
-                                                &trans          &trans          &trans                                          &trans          &trans          &trans
-            >;
-        };
-
-        extra_layer_5 {
-            display-name = "EXTRA 5";
-            bindings = <
-&trans          &trans          &trans          &trans          &trans          &trans          &trans          &trans          &trans          &trans          &trans          &trans          &trans          &trans
-&trans          &trans          &trans          &trans          &trans          &trans          &trans          &trans          &trans          &trans          &trans          &trans          &trans          &trans
-&trans          &trans          &trans          &trans          &trans          &trans                                          &trans          &trans          &trans          &trans          &trans          &trans
-                                                &trans          &trans          &trans                                          &trans          &trans          &trans
-            >;
-        };
-
-        extra_layer_6 {
-            display-name = "EXTRA 6";
             bindings = <
 &trans          &trans          &trans          &trans          &trans          &trans          &trans          &trans          &trans          &trans          &trans          &trans          &trans          &trans
 &trans          &trans          &trans          &trans          &trans          &trans          &trans          &trans          &trans          &trans          &trans          &trans          &trans          &trans
