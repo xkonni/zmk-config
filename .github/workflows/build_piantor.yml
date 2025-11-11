@@ -9,6 +9,8 @@ on:
       - 'build_piantor.yaml'
       - 'config/west.yml'
       - 'zephyr/**'
+permissions:
+  contents: write
 
 jobs:
   draw:

@@ -9,6 +9,8 @@ on:
       - 'build_eyelash_sofle.yaml'
       - 'config/west.yml'
       - 'zephyr/**'
+permissions:
+  contents: write
 
 jobs:
   draw:
