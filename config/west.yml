@@ -14,7 +14,7 @@ manifest:
     - name: nice-view-battery
       remote: infely
       revision: main
-    - name: nice-view-custom
+    - name: nice-view-glyphs
       remote: xkonni
       revision: main
   self:
