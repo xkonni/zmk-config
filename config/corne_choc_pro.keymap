@@ -45,7 +45,7 @@
             //                    |     | LY3 |     |               |     |     |     |
             bindings = <
 &kp GRAVE       &kp EXCL        &kp AT          &kp HASH        &kp DLLR        &kp PRCNT       &trans          &trans          &kp CARET       &kp AMPS        &kp ASTRK       &kp LPAR        &kp RPAR        &trans
-&trans          &kp C_VOL_DN    &kp C_MUTE      &kp C_VOL_UP    &kp GRAVE       &kp EQUAL       &trans          &trans          &kp MINUS       &kp LBKT        &kp RBKT        &none           &kp PSCRN       &trans
+&trans          &kp C_VOL_DN    &kp C_MUTE      &kp C_VOL_UP    &kp GRAVE       &kp EQUAL       &trans          &trans          &kp MINUS       &kp LBKT        &kp RBKT        &none           &kp PSCRN       &kp DELETE
 &trans          &kp C_PREV      &kp C_PP        &kp C_NEXT      &kp TILDE       &kp PLUS                                        &kp UNDER       &kp LBRC        &kp RBRC        &none           &kp BSLH        &kp PIPE
                                                 &trans          &trans          &trans                                          &trans          &mo 3           &trans
             >;
@@ -60,7 +60,7 @@
             //                    |     |     |     |               |     | LY3 |     |
             bindings = <
 &kp TILDE       &kp N1          &kp N2          &kp N3          &kp N4          &kp N5          &trans          &trans          &kp N6          &kp N7          &kp N8          &kp N9          &kp N0          &trans
-&trans          &none           &none           &none           &none           &none           &trans          &trans          &kp LEFT        &kp DOWN        &kp UP          &kp RIGHT       &none           &trans
+&trans          &none           &none           &none           &none           &none           &trans          &trans          &kp LEFT        &kp DOWN        &kp UP          &kp RIGHT       &none           &kp DELETE
 &trans          &none           &none           &none           &none           &none                                           &kp HOME        &kp PG_DN       &kp PG_UP       &kp END         &kp BSLH        &kp PIPE
                                                 &trans          &mo 3           &trans                                          &trans          &trans          &trans
             >;
