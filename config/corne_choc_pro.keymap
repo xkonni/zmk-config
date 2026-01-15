@@ -14,22 +14,20 @@
     chosen {
         zmk,physical-layout = &default_layout;
     };
-};
 
-/ {
     keymap {
         compatible = "zmk,keymap";
 
         default_layer {
             display-name = "MAIN";
             // -----------------------------------------------------------------------------------------
-            // | TAB  |  Q  |  W  |  E  |  R  |  T  | VOL+ | VOL+ |  Y  |  U  |  I  |  O  |  P  | BSPC |
-            // | ESC  |  A  |  S  |  D  |  F  |  G  | VOL- | VOL- |  H  |  J  |  K  |  L  |  ;  |  '   |
-            // | SHFT |  Z  |  X  |  C  |  V  |  B  |              |  N  |  M  |  ,  |  .  |  /  | SHFT |
-            //                    | ALT | MO1 | SPC |              | RET | MO2 | ALT |
+            // | TAB |  Q  |  W  |  E  |  R  |  T  |      |      |  Y  |  U  |  I  |  O  |  P  | BSPC |
+            // |CT/ES|  A  |  S  |  D  |  F  |  G  |      |      |  H  |  J  |  K  |  L  |  ;  |  '   |
+            // | SHFT|  Z  |  X  |  C  |  V  |  B  |             |  N  |  M  |  ,  |  .  |  /  | SHFT |
+            //                   | ALT | MO1 | SPC |             | RET | MO2 | ALT |
             bindings = <
-&mt LGUI TAB    &kp Q           &kp W           &kp E           &kp R           &kp T           &kp C_VOL_UP    &kp C_VOL_UP    &kp Y           &kp U           &kp I           &kp O           &kp P           &kp BSPC
-&mt LCTRL ESC   &kp A           &kp S           &kp D           &kp F           &kp G           &kp C_VOL_DN    &kp C_VOL_DN    &kp H           &kp J           &kp K           &kp L           &kp SEMI        &mt RCTRL SQT
+&mt LGUI TAB    &kp Q           &kp W           &kp E           &kp R           &kp T           &none           &none           &kp Y           &kp U           &kp I           &kp O           &kp P           &kp BSPC
+&mt LCTRL ESC   &kp A           &kp S           &kp D           &kp F           &kp G           &none           &none           &kp H           &kp J           &kp K           &kp L           &kp SEMI        &mt RCTRL SQT
 &kp LSHFT       &kp Z           &kp X           &kp C           &kp V           &kp B                                           &kp N           &kp M           &kp COMMA       &kp DOT         &kp FSLH        &kp RSHIFT
                                                 &kp LALT        &mo 1           &kp SPACE                                       &kp RET         &mo 2           &kp RALT
             >;
@@ -39,45 +37,60 @@
         numbers_layer {
             display-name = "NUMBERS";
             // -----------------------------------------------------------------------------------------
-            // |  `   |  1  |  2  |  3  |  4  |  5  |       |       |  6  |  7  |  8  |  9  |  0  |     |
-            // |      | VOL-| MUTE| VOL+|  `  |  =  |       |       |  -  |  [  |  ]  |     | PRSC|     |
-            // |      | PREV| PP  | NEXT|  ~  |  +  |               |  _  |  {  |  }  |     |  \  |  |  |
-            //                    |     |     |     |               |     | MO3 |     |
+            // |  `  |  1  |  2  |  3  |  4  |  5  |       |       |  6  |  7  |  8  |  9  |  0  |     |
+            // |     | VOL-| MUTE| VOL+|  `  |  =  |       |       |  -  |  [  |  ]  |     |     |     |
+            // |     | PREV| PLAY| PREV|  ~  |  +  |               |  _  |  {  |  }  |     |  \  |  |  |
+            //                   |     |     |     |               |     | MO4 |     |
             bindings = <
 &kp GRAVE       &kp N1          &kp N2          &kp N3          &kp N4          &kp N5          &trans          &trans          &kp N6          &kp N7          &kp N8          &kp N9          &kp N0          &trans
-&trans          &kp C_VOL_DN    &kp C_MUTE      &kp C_VOL_UP    &kp GRAVE       &kp EQUAL       &trans          &trans          &kp MINUS       &kp LBKT        &kp RBKT        &none           &kp PSCRN       &kp DELETE
+&trans          &kp C_VOL_DN    &kp C_MUTE      &kp C_VOL_UP    &kp GRAVE       &kp EQUAL       &trans          &trans          &kp MINUS       &kp LBKT        &kp RBKT        &none           &none           &kp DELETE
 &trans          &kp C_PREV      &kp C_PP        &kp C_NEXT      &kp TILDE       &kp PLUS                                        &kp UNDER       &kp LBRC        &kp RBRC        &none           &kp BSLH        &kp PIPE
-                                                &trans          &trans          &trans                                          &trans          &mo 3           &trans
+                                                &trans          &trans          &trans                                          &trans          &mo 4           &trans
             >;
         };
 
         symbols_layer {
             display-name = "SYMBOLS";
             // -----------------------------------------------------------------------------------------
-            // |  ~   |  !  |  @  |  #  |  $  |  %  |       |       |  ^  |  &  |  *  |  (  |  )  |     |
-            // |      |     |     |     |     |     |       |       | LFT | DWN |  UP | RGT |     |     |
-            // |      |     |     |     |     |     |               | HOME| PGDN| PGUP| END |  \  |  |  |
-            //                    |     | MO3 |     |               |     |     |     |
+            // |  ~  |  !  |  @  |  #  |  $  |  %  |       |       |  ^  |  &  |  *  |  (  |  )  |     |
+            // |     |     |     |     |     |     |       |       | LFT | DWN |  UP | RGT | PRSC|     |
+            // |     |     |     |     |     |     |               | HOME| PGDN| PGUP| END |  \  |  |  |
+            //                   |     | MO4 |     |               |     |     | MO3 |
             bindings = <
-&kp TILDE       &kp EXCL        &kp AT          &kp HASH        &kp DLLR        &kp PRCNT       &trans          &trans          &kp CARET       &kp AMPS        &kp ASTRK       &kp LPAR        &kp RPAR        &trans
-&trans          &none           &none           &none           &none           &none           &trans          &trans          &kp LEFT        &kp DOWN        &kp UP          &kp RIGHT       &none           &kp DELETE
+&kp TILDE       &kp LS(N1)      &kp LS(N2)      &kp LS(N3)      &kp LS(N4)      &kp LS(N5)      &trans          &trans          &kp LS(N6)      &kp LS(N7)      &kp LS(N8)      &kp LS(N9)      &kp LS(N0)      &trans
+&trans          &none           &none           &none           &none           &none           &trans          &trans          &kp LEFT        &kp DOWN        &kp UP          &kp RIGHT       &kp PSCRN       &kp DELETE
 &trans          &none           &none           &none           &none           &none                                           &kp HOME        &kp PG_DN       &kp PG_UP       &kp END         &kp BSLH        &kp PIPE
-                                                &trans          &mo 3           &trans                                          &trans          &trans          &trans
+                                                &trans          &mo 4           &trans                                          &trans          &trans          &mo 3
             >;
         };
 
-        fcodes_layer {
-            display-name = "FCODES";
+        fkeys_layer {
+            display-name = "FKEYS";
             // -----------------------------------------------------------------------------------------
-            // | F12  | F1  | F2  | F3  | F4  | F5  |       |       | F6  | F7  | F8  | F9  | F10 | F11 |
-            // |      | BT0 | BT1 | BT2 | BT3 | BT4 |       |       | MLFT| MDN | MUP | MRGT|     |UNLCK|
-            // |      |BTDC0|BTDC1|BTDC2|BTDC3|BTDC4|               | LCLK| MCLK| RCLK|     |     |     |
-            //                    |     |     |     |               |     |     |     |
+            // | F12 |  F1 |  F2 |  F3 |  F4 |  F5 |       |       |  F6 |  F7 |  F8 |  F9 | F10 | F11 |
+            // |     |     |     |     |     |     |       |       |     |     |     |     |     |     |
+            // |     |     |     |     |     |     |               |     |     |     |     |     |     |
+            //                   |     |     |     |               |     |     |     |
             bindings = <
 &kp F12         &kp F1          &kp F2          &kp F3          &kp F4          &kp F5          &trans          &trans          &kp F6          &kp F7          &kp F8          &kp F9          &kp F10         &kp F11
-&trans          &bt BT_SEL 0    &bt BT_SEL 1    &bt BT_SEL 2    &bt BT_SEL 3    &bt BT_SEL 4    &trans          &trans          &mmv MOVE_LEFT  &mmv MOVE_DOWN  &mmv MOVE_UP    &mmv MOVE_RIGHT &none           &studio_unlock
-&trans          &bt BT_DISC 0   &bt BT_DISC 1   &bt BT_DISC 2   &bt BT_DISC 3   &bt BT_DISC 4                                   &mkp LCLK       &mkp MCLK       &mkp RCLK       &none           &none           &trans
-                                                &trans          &trans          &trans                                          &trans          &trans          &mo 4
+&trans          &none           &none           &none           &none           &none           &trans          &trans          &none           &none           &none           &none           &none           &none
+&trans          &none           &none           &none           &none           &none                                           &none           &none           &none           &none           &none           &none
+                                                &trans          &trans          &trans                                          &trans          &trans          &trans
+            >;
+        };
+
+        btms_layer {
+            display-name = "BT/MS";
+            // -----------------------------------------------------------------------------------------
+            // |      | BT0 | BT1 | BT2 | BT3 | BT4 |       |       |BTDC0|BTDC1|BTDC2|BTDC3|BTDC4|     |
+            // |      |     |     |     |     |     |       |       | MLFT| MDN | MUP | MRGT|     |UNLCK|
+            // |      |BTDC0|BTDC1|BTDC2|BTDC3|BTDC4|               | LCLK| MCLK| RCLK|     |     |     |
+            //                    |     |     |     |               |     |     | MO5 |
+            bindings = <
+&trans          &bt BT_SEL 0    &bt BT_SEL 1    &bt BT_SEL 2    &bt BT_SEL 3    &bt BT_SEL 4    &trans          &trans          &bt BT_DISC 0   &bt BT_DISC 1   &bt BT_DISC 2   &bt BT_DISC 3   &bt BT_DISC 4   &trans
+&trans          &trans          &trans          &trans          &trans          &trans          &trans          &trans          &mmv MOVE_LEFT  &mmv MOVE_DOWN  &mmv MOVE_UP    &mmv MOVE_RIGHT &none           &studio_unlock
+&trans          &trans          &trans          &trans          &trans          &trans                                          &mkp LCLK       &mkp MCLK       &mkp RCLK       &none           &none           &trans
+                                                &trans          &trans          &trans                                          &trans          &trans          &mo 5
             >;
         };
 
