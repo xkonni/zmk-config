@@ -82,10 +82,10 @@
         rgb_layer {
             display-name = "RGB";
             bindings = <
-&trans          &rgb_ug RGB_EFR &rgb_ug RGB_TOG &rgb_ug RGB_EFF &trans          &trans          &trans          &trans          &trans          &trans          &trans          &trans          &trans          &trans
-&trans          &rgb_ug RGB_BRD &rgb_ug RGB_TOG &rgb_ug RGB_BRI &trans          &trans          &trans          &trans          &trans          &trans          &trans          &trans          &trans          &trans
-&trans          &rgb_ug RGB_HUD &rgb_ug RGB_TOG &rgb_ug RGB_HUI &trans          &trans                                          &trans          &trans          &trans          &trans          &trans          &trans
-                                                &trans          &trans          &trans                                          &trans          &trans          &trans
+&trans          &rgb_ug RGB_EFR &rgb_ug RGB_TOG &rgb_ug RGB_EFF &rgb_ug RGB_1ON 1  &rgb_ug RGB_1ON 10  &trans          &trans          &trans          &trans          &trans          &trans          &trans          &trans
+&trans          &rgb_ug RGB_BRD &rgb_ug RGB_TOG &rgb_ug RGB_BRI &rgb_ug RGB_1OFF 1 &rgb_ug RGB_1OFF 10 &trans          &trans          &trans          &trans          &trans          &trans          &trans          &trans
+&trans          &rgb_ug RGB_HUD &rgb_ug RGB_TOG &rgb_ug RGB_HUI &rgb_ug RGB_1TOG 1 &rgb_ug RGB_1TOG 10 &trans          &trans          &trans          &trans          &trans          &trans
+                                                &trans          &trans             &trans              &trans          &trans          &trans
             >;
         };
 
