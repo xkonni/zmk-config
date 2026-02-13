@@ -3,12 +3,16 @@ name: Build and release Corne Choc Pro firmware
 on:
   workflow_dispatch:
   push:
+    branches:
+      - main
     paths:
       - 'boards/arm/corne_choc_pro/**'
       - 'config/corne_choc_pro.*'
       - 'build_corne.yaml'
       - 'config/west.yml'
       - 'zephyr/**'
+    tags:
+      - 'build'
 permissions:
   contents: write
 
@@ -16,7 +20,7 @@ jobs:
   draw:
     name: Draw Corne Keymap
     uses: caksoylar/keymap-drawer/.github/workflows/draw-zmk.yml@main
-    if: github.ref == 'refs/heads/main'
+    if: github.ref == 'refs/heads/main' || github.ref == 'refs/tags/build'
     permissions:
       contents: read
     with:
@@ -34,7 +38,7 @@ jobs:
   release:
     name: Release Corne
     needs: [build, draw]
-    if: success() && github.ref == 'refs/heads/main'
+    if: success() && (github.ref == 'refs/heads/main' || github.ref == 'refs/tags/build')
     runs-on: ubuntu-latest
     steps:
       - name: Download artifacts

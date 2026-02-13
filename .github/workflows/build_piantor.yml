@@ -3,12 +3,16 @@ name: Build and release Piantor Pro BT firmware
 on:
   workflow_dispatch:
   push:
+    branches:
+      - main
     paths:
       - 'boards/arm/piantor_pro_bt/**'
       - 'config/piantor_pro_bt.*'
       - 'build_piantor.yaml'
       - 'config/west.yml'
       - 'zephyr/**'
+    tags:
+      - 'build'
 permissions:
   contents: write
 
@@ -16,7 +20,7 @@ jobs:
   draw:
     name: Draw Piantor Keymap
     uses: caksoylar/keymap-drawer/.github/workflows/draw-zmk.yml@main
-    if: github.ref == 'refs/heads/main'
+    if: github.ref == 'refs/heads/main' || github.ref == 'refs/tags/build'
     permissions:
       contents: read
     with:
@@ -34,7 +38,7 @@ jobs:
   release:
     name: Release Piantor Pro BT
     needs: [build, draw]
-    if: success() && github.ref == 'refs/heads/main'
+    if: success() && (github.ref == 'refs/heads/main' || github.ref == 'refs/tags/build')
     runs-on: ubuntu-latest
     steps:
       - name: Download artifacts
