@@ -3,12 +3,16 @@ name: Build and release Eyelash Sofle firmware
 on:
   workflow_dispatch:
   push:
+    branches:
+      - main
     paths:
       - 'boards/arm/eyelash_sofle/**'
       - 'config/eyelash_sofle.*'
       - 'build_eyelash_sofle.yaml'
       - 'config/west.yml'
       - 'zephyr/**'
+    tags:
+      - 'build'
 permissions:
   contents: write
 
@@ -16,7 +20,7 @@ jobs:
   draw:
     name: Draw Eyelash Sofle Keymap
     uses: caksoylar/keymap-drawer/.github/workflows/draw-zmk.yml@main
-    if: github.ref == 'refs/heads/main'
+    if: github.ref == 'refs/heads/main' || github.ref == 'refs/tags/build'
     permissions:
       contents: read
     with:
@@ -34,7 +38,7 @@ jobs:
   release:
     name: Release Eyelash Sofle
     needs: [build, draw]
-    if: success() && github.ref == 'refs/heads/main'
+    if: success() && (github.ref == 'refs/heads/main' || github.ref == 'refs/tags/build')
     runs-on: ubuntu-latest
     steps:
       - name: Download artifacts
