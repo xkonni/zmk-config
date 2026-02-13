@@ -15,6 +15,28 @@
         zmk,physical-layout = &default_layout;
     };
 
+    combos {
+        compatible = "zmk,combos";
+
+        combo_qw_tab {
+            timeout-ms = <50>;
+            key-positions = <0 1>;
+            bindings = <&kp TAB>;
+        };
+
+        combo_df_esc {
+            timeout-ms = <50>;
+            key-positions = <12 13>;
+            bindings = <&kp ESC>;
+        };
+
+        combo_jk_space {
+            timeout-ms = <50>;
+            key-positions = <16 17>;
+            bindings = <&kp SPACE>;
+        };
+    };
+
     keymap {
         compatible = "zmk,keymap";
 
