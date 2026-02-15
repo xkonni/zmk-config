@@ -48,25 +48,32 @@
     combos {
         compatible = "zmk,combos";
 
-        combo_qw_tab {
+        combo_et {
             timeout-ms = <50>;
             require-prior-idle-ms = <50>;
-            key-positions = <1 2>;
-            bindings = <&kp TAB>;
+            key-positions = <3 5>;
+            bindings = <&caps_word>;
         };
 
-        combo_df_esc {
+        combo_yi {
+            timeout-ms = <50>;
+            require-prior-idle-ms = <50>;
+            key-positions = <8 10>;
+            bindings = <&caps_word>;
+        };
+
+        combo_df {
             timeout-ms = <50>;
             require-prior-idle-ms = <50>;
             key-positions = <17 18>;
             bindings = <&kp ESC>;
         };
 
-        combo_jk_space {
+        combo_jk {
             timeout-ms = <50>;
             require-prior-idle-ms = <50>;
             key-positions = <23 24>;
-            bindings = <&kp SPACE>;
+            bindings = <&kp ESC>;
         };
     };
 
@@ -75,10 +82,10 @@
 
         default_layer {
             display-name = "MAIN";
-            // -----------------------------------------------------------------------------------------
-            // | TAB |  Q  |  W  |  E  |  R  |  T  |      |      |  Y  |  U  |  I  |  O  |  P  | BSPC |
-            // |CT/ES|GUI/A|ALT/S|SFT/D|CTL/F|  G  | VOL- | VOL- |  H  |CTL/J|SFT/K|ALT/L|GUI/;|  '   |
-            // | SHFT|  Z  |  X  |  C  |  V  |  B  |             |  N  |  M  |  ,  |  .  |  /  | SHFT |
+            // ----------------------------------------------------------------------------------------
+            // | TAB |  Q  |  W  |  E  |  R  |  T  |      |      |  Y  |  U  |  I  |  O  |  P  | BSPC|
+            // |CT/ES|GUI/A|ALT/S|SFT/D|CTL/F|  G  | VOL- | VOL- |  H  |CTL/J|SFT/K|ALT/L|GUI/;|  '  |
+            // | SHFT|  Z  |  X  |  C  |  V  |  B  |             |  N  |  M  |  ,  |  .  |  /  | SHFT|
             //                   | ALT | MO1 | SPC |             | RET | MO2 | ALT |
             bindings = <
 &mt LGUI TAB    &kp Q           &kp W           &kp E           &kp R           &kp T           &none           &none           &kp Y           &kp U           &kp I           &kp O           &kp P           &kp BSPC
@@ -95,12 +102,12 @@
             // |  `  |  1  |  2  |  3  |  4  |  5  |       |       |  6  |  7  |  8  |  9  |  0  |     |
             // |     | VOL-| MUTE| VOL+|  `  |  =  |       |       |  -  |  [  |  ]  |     |     |     |
             // |     | PREV| PLAY| PREV|  ~  |  +  |               |  _  |  {  |  }  |     |  \  |  |  |
-            //                   |     |     |     |               |     | MO3 |     |
+            //                   |     |     |     |               | BSPC| MO3 |     |
             bindings = <
 &kp GRAVE       &kp N1          &kp N2          &kp N3          &kp N4          &kp N5          &trans          &trans          &kp N6          &kp N7          &kp N8          &kp N9          &kp N0          &trans
 &trans          &kp C_VOL_DN    &kp C_MUTE      &kp C_VOL_UP    &kp GRAVE       &kp EQUAL       &trans          &trans          &kp MINUS       &kp LBKT        &kp RBKT        &none           &none           &kp DELETE
 &trans          &kp C_PREV      &kp C_PP        &kp C_NEXT      &kp TILDE       &kp PLUS                                        &kp UNDER       &kp LBRC        &kp RBRC        &none           &kp BSLH        &kp PIPE
-                                                &trans          &trans          &trans                                          &trans          &mo 3           &trans
+                                                &trans          &trans          &trans                                          &kp BSPC        &mo 3           &trans
             >;
         };
 
@@ -110,12 +117,12 @@
             // |  ~  |  !  |  @  |  #  |  $  |  %  |       |       |  ^  |  &  |  *  |  (  |  )  |     |
             // |     | GUI | ALT | CTL | SFT |     |       |       | LFT | DWN |  UP | RGT | PRSC|     |
             // |     |     |     |     |     |     |               | HOME| PGDN| PGUP| END |  \  |  |  |
-            //                   |     | MO4 |     |               |     |     | MO3 |
+            //                   |     | MO4 | BSPC|               |     |     | MO3 |
             bindings = <
 &kp TILDE       &kp LS(N1)      &kp LS(N2)      &kp LS(N3)      &kp LS(N4)      &kp LS(N5)      &trans          &trans          &kp LS(N6)      &kp LS(N7)      &kp LS(N8)      &kp LS(N9)      &kp LS(N0)      &trans
 &trans          &kp LGUI        &kp LALT        &kp LCTL        &kp LSFT        &none           &trans          &trans          &kp LEFT        &kp DOWN        &kp UP          &kp RIGHT       &kp PSCRN       &kp DELETE
 &trans          &none           &none           &none           &none           &none                                           &kp HOME        &kp PG_DN       &kp PG_UP       &kp END         &kp BSLH        &kp PIPE
-                                                &trans          &mo 4           &trans                                          &trans          &trans          &mo 3
+                                                &trans          &mo 4           &kp BSPC                                        &trans          &trans          &mo 3
             >;
         };
 
