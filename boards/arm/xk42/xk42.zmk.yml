@@ -1,0 +1,16 @@
+file_format: "1"
+id: xk42
+name: XK42
+type: board
+arch: arm
+features:
+  - keys
+  - underglow
+  - studio
+outputs:
+  - usb
+  - ble
+url: https://example.com
+siblings:
+  - xk42_left
+  - xk42_right
