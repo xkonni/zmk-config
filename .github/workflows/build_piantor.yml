@@ -1,9 +1,9 @@
-name: Build and release Piantor Pro BT firmware
+name: Build Piantor Pro BT firmware
 
 on:
   workflow_dispatch:
   push:
-    branches:
+    branches-ignore:
       - main
     paths:
       - 'boards/arm/piantor_pro_bt/**'
@@ -20,7 +20,6 @@ jobs:
   draw:
     name: Draw Piantor Keymap
     uses: caksoylar/keymap-drawer/.github/workflows/draw-zmk.yml@main
-    if: github.ref == 'refs/heads/main' || github.ref == 'refs/tags/build'
     permissions:
       contents: read
     with:
@@ -35,56 +34,3 @@ jobs:
     with:
       build_matrix_path: build_piantor.yaml
       archive_name: piantor-firmware
-  release:
-    name: Release Piantor Pro BT
-    needs: [build, draw]
-    if: success() && (github.ref == 'refs/heads/main' || github.ref == 'refs/tags/build')
-    runs-on: ubuntu-latest
-    steps:
-      - name: Download artifacts
-        uses: actions/download-artifact@v4
-        with:
-          name: piantor-firmware
-          path: ./artifacts
-      - name: Download keymap artifact
-        uses: actions/download-artifact@v4
-        with:
-          name: piantor-keymap
-          path: ./keymap_artifacts
-      - name: Convert keymap SVG to PNG
-        run: |
-          sudo apt-get update
-          sudo apt-get install -y --no-install-recommends librsvg2-bin
-          for f in ./keymap_artifacts/*.svg; do
-            [ -f "$f" ] || continue
-            png="${f%.svg}.png"
-            rsvg-convert "$f" -o "$png"
-            echo "Converted $f -> $png"
-          done
-      - name: Generate build info
-        id: info
-        run: |
-          echo "timestamp=$(date +'%Y-%m-%d %H:%M:%S UTC')" >> $GITHUB_OUTPUT
-          echo "short_sha=${GITHUB_SHA:0:7}" >> $GITHUB_OUTPUT
-      - name: Delete existing tag
-        uses: dev-drprasad/delete-tag-and-release@v1.0
-        with:
-          tag_name: latest-piantor
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-        continue-on-error: true
-      - name: Create release
-        uses: softprops/action-gh-release@v1
-        with:
-          tag_name: latest-piantor
-          name: Piantor Pro BT Latest Firmware
-          body: |
-            🔁 **Piantor Pro BT Build**
-            Commit: ${{ steps.info.outputs.short_sha }}
-            Built: ${{ steps.info.outputs.timestamp }}
-            Install: flash left/right .uf2 files.
-            Keymap PNG: Download from release assets
-          files: |
-            ./artifacts/**/*.uf2
-            ./keymap_artifacts/**/*.png
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
