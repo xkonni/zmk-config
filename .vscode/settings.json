@@ -1,0 +1,19 @@
+{
+    // File associations for ZMK syntax highlighting
+    "files.associations": {
+        "*.keymap": "cpp",
+        "*.dtsi": "cpp",
+        "*.dts": "cpp"
+    },
+
+    // Disable formatting for keymap files
+    "[cpp]": {
+        "editor.formatOnSave": false,
+        "editor.formatOnPaste": false,
+        "editor.formatOnType": false
+    },
+
+    // Optional: Enable word wrap and better readability
+    "editor.wordWrap": "on",
+    "editor.rulers": [80, 100]
+}
