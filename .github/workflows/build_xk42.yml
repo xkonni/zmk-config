@@ -1,0 +1,36 @@
+name: Build xk42 firmware
+
+on:
+  workflow_dispatch:
+  push:
+    branches-ignore:
+      - main
+    paths:
+      - "boards/arm/xk42/**"
+      - "config/xk42.*"
+      - "build_xk42.yaml"
+      - "config/west.yml"
+      - "zephyr/**"
+    tags:
+      - "build"
+permissions:
+  contents: write
+
+jobs:
+  draw:
+    name: Draw xk42 Keymap
+    uses: caksoylar/keymap-drawer/.github/workflows/draw-zmk.yml@main
+    permissions:
+      contents: read
+    with:
+      destination: artifact
+      artifact_name: xk42-keymap
+      fail_on_error: true
+      keymap_patterns: "config/xk42.keymap"
+  build:
+    name: Build xk42
+    needs: draw
+    uses: zmkfirmware/zmk/.github/workflows/build-user-config.yml@main
+    with:
+      build_matrix_path: build_xk42.yaml
+      archive_name: xk42-firmware
