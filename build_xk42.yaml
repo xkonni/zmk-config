@@ -1,0 +1,22 @@
+---
+include:
+  - board: xk42_left
+    shield: nice_view
+    snippet: studio-rpc-usb-uart
+    cmake-args: -DCONFIG_ZMK_STUDIO=y
+    artifact-name: xk42-left-nice_view
+  - board: xk42_right
+    shield: nice_view_glyphs
+    snippet: studio-rpc-usb-uart
+    cmake-args: -DCONFIG_ZMK_STUDIO=y -DCONFIG_NICE_VIEW_WIDGET_PATTERN=4
+    artifact-name: xk42-right-nice_glyphs
+  - board: xk42_left
+    shield: settings_reset
+    snippet: studio-rpc-usb-uart
+    cmake-args: -DCONFIG_ZMK_STUDIO=y
+    artifact-name: xk42-left-settings_reset
+  - board: xk42_right
+    shield: settings_reset
+    snippet: studio-rpc-usb-uart
+    cmake-args: -DCONFIG_ZMK_STUDIO=y
+    artifact-name: xk42-right-settings_reset
