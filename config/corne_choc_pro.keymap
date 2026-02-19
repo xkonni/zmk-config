@@ -11,6 +11,11 @@
 #include <dt-bindings/zmk/rgb.h>
 #include "key-labels/corne_choc_pro.h"
 
+/* Override caps_word to continue on letters, numbers, minus, underscore only */
+&caps_word {
+    continue-list = <UNDERSCORE MINUS>;
+};
+
 / {
     chosen {
         zmk,physical-layout = &default_layout;
@@ -45,7 +50,6 @@
             hold-trigger-on-release;
         };
     };
-
 
     combos {
         compatible = "zmk,combos";
@@ -86,13 +90,13 @@
             display-name = "MAIN";
             // ----------------------------------------------------------------------------------------
             // | TAB |  Q  |  W  |  E  |  R  |  T  |      |      |  Y  |  U  |  I  |  O  |  P  | BSPC|
-            // |CT/ES|GUI/A|ALT/S|CTL/D|SFT/F|  G  | VOL- | VOL- |  H  |SFT/J|CTL/K|ALT/L|GUI/;|  '  |
-            // | SHFT|  Z  |  X  |  C  |  V  |  B  |             |  N  |  M  |  ,  |  .  |  /  | SHFT|
+            // |CT/ES|GUI/A|ALT/S|CTL/D|SFT/F|LT1/G| VOL- | VOL- |LT1/H|SFT/J|CTL/K|ALT/L|GUI/;|  '  |
+            // | SHFT|  Z  |  X  |  C  |  V  |LT2/B|             |LT2/N|  M  |  ,  |  .  |  /  | SHFT|
             //                   | ALT | MO1 | SPC |             | RET | MO2 | ALT |
             bindings = <
 &mt LGUI TAB    &kp Q           &kp W           &kp E           &kp R           &kp T           &none           &none           &kp Y           &kp U           &kp I           &kp O           &kp P           &kp BSPC
-&mt LCTRL ESC   &hml LGUI A     &hml LALT S     &hml LCTRL D    &hml LSHIFT F   &lt 2 G         &none           &none           &lt 2 H         &hmr RSHIFT J   &hmr RCTL K     &hmr RALT L     &hmr RGUI SEMI  &mt RCTRL SQT
-&kp LSHFT       &kp Z           &kp X           &kp C           &kp V           &kp B                                           &kp N           &kp M           &kp COMMA       &kp DOT         &kp FSLH        &kp RSHIFT
+&mt LCTRL ESC   &hml LGUI A     &hml LALT S     &hml LCTRL D    &hml LSHIFT F   &lt 1 G         &none           &none           &lt 1 H         &hmr RSHIFT J   &hmr RCTL K     &hmr LALT L     &hmr RGUI SEMI  &mt RCTRL SQT
+&kp LSHFT       &kp Z           &kp X           &kp C           &kp V           &lt 2 B                                         &lt 2 N         &kp M           &kp COMMA       &kp DOT         &kp FSLH        &kp RSHIFT
                                                 &kp LALT        &mo 1           &kp SPACE                                       &kp RET         &mo 2           &kp RALT
             >;
             sensor-bindings = <&inc_dec_kp C_VOL_DN C_VOL_UP &inc_dec_kp PG_UP PG_DN &inc_dec_kp C_PREV C_NEXT &inc_dec_kp C_BRI_DN C_BRI_UP>;
@@ -104,12 +108,12 @@
             // |  `  |  1  |  2  |  3  |  4  |  5  |       |       |  6  |  7  |  8  |  9  |  0  |     |
             // |     | VOL-| MUTE| VOL+|  `  |  =  |       |       |  -  |  [  |  ]  |     |     |     |
             // |     | PREV| PLAY| PREV|  ~  |  +  |               |  _  |  {  |  }  |     |  \  |  |  |
-            //                   |     |     |     |               | BSPC| MO3 |     |
+            //                   |     |     |     |               | BSPC| MO4 |     |
             bindings = <
 &kp GRAVE       &kp N1          &kp N2          &kp N3          &kp N4          &kp N5          &trans          &trans          &kp N6          &kp N7          &kp N8          &kp N9          &kp N0          &trans
 &trans          &kp C_VOL_DN    &kp C_MUTE      &kp C_VOL_UP    &kp GRAVE       &kp EQUAL       &trans          &trans          &kp MINUS       &kp LBKT        &kp RBKT        &none           &none           &kp DELETE
 &trans          &kp C_PREV      &kp C_PP        &kp C_NEXT      &kp TILDE       &kp PLUS                                        &kp UNDER       &kp LBRC        &kp RBRC        &none           &kp BSLH        &kp PIPE
-                                                &trans          &trans          &trans                                          &kp BSPC        &mo 3           &trans
+                                                &trans          &trans          &trans                                          &kp BSPC        &mo 4           &trans
             >;
         };
 
@@ -164,46 +168,6 @@
 &trans          &rgb_ug RGB_EFR &rgb_ug RGB_TOG &rgb_ug RGB_EFF &trans          &trans          &trans          &trans          &trans          &trans          &trans          &trans          &trans          &trans
 &trans          &rgb_ug RGB_BRD &rgb_ug RGB_TOG &rgb_ug RGB_BRI &trans          &trans          &trans          &trans          &trans          &trans          &trans          &trans          &trans          &trans
 &trans          &rgb_ug RGB_HUD &rgb_ug RGB_TOG &rgb_ug RGB_HUI &trans          &trans                                          &trans          &trans          &trans          &trans          &trans          &trans
-                                                &trans          &trans          &trans                                          &trans          &trans          &trans
-            >;
-        };
-
-        extra_layer_1 {
-            display-name = "EXTRA 1";
-            bindings = <
-&trans          &trans          &trans          &trans          &trans          &trans          &trans          &trans          &trans          &trans          &trans          &trans          &trans          &trans
-&trans          &trans          &trans          &trans          &trans          &trans          &trans          &trans          &trans          &trans          &trans          &trans          &trans          &trans
-&trans          &trans          &trans          &trans          &trans          &trans                                          &trans          &trans          &trans          &trans          &trans          &trans
-                                                &trans          &trans          &trans                                          &trans          &trans          &trans
-            >;
-        };
-
-        extra_layer_2 {
-            display-name = "EXTRA 2";
-            bindings = <
-&trans          &trans          &trans          &trans          &trans          &trans          &trans          &trans          &trans          &trans          &trans          &trans          &trans          &trans
-&trans          &trans          &trans          &trans          &trans          &trans          &trans          &trans          &trans          &trans          &trans          &trans          &trans          &trans
-&trans          &trans          &trans          &trans          &trans          &trans                                          &trans          &trans          &trans          &trans          &trans          &trans
-                                                &trans          &trans          &trans                                          &trans          &trans          &trans
-            >;
-        };
-
-        extra_layer_3 {
-            display-name = "EXTRA 3";
-            bindings = <
-&trans          &trans          &trans          &trans          &trans          &trans          &trans          &trans          &trans          &trans          &trans          &trans          &trans          &trans
-&trans          &trans          &trans          &trans          &trans          &trans          &trans          &trans          &trans          &trans          &trans          &trans          &trans          &trans
-&trans          &trans          &trans          &trans          &trans          &trans                                          &trans          &trans          &trans          &trans          &trans          &trans
-                                                &trans          &trans          &trans                                          &trans          &trans          &trans
-            >;
-        };
-
-        extra_layer_4 {
-            display-name = "EXTRA 4";
-            bindings = <
-&trans          &trans          &trans          &trans          &trans          &trans          &trans          &trans          &trans          &trans          &trans          &trans          &trans          &trans
-&trans          &trans          &trans          &trans          &trans          &trans          &trans          &trans          &trans          &trans          &trans          &trans          &trans          &trans
-&trans          &trans          &trans          &trans          &trans          &trans                                          &trans          &trans          &trans          &trans          &trans          &trans
                                                 &trans          &trans          &trans                                          &trans          &trans          &trans
             >;
         };
