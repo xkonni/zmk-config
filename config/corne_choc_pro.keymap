@@ -46,164 +46,96 @@
         };
     };
 
-
-    combos {
-        compatible = "zmk,combos";
-
-        combo_et {
-            timeout-ms = <50>;
-            require-prior-idle-ms = <50>;
-            key-positions = <3 5>;
-            bindings = <&caps_word>;
-        };
-
-        combo_yi {
-            timeout-ms = <50>;
-            require-prior-idle-ms = <50>;
-            key-positions = <8 10>;
-            bindings = <&caps_word>;
-        };
-
-        combo_df {
-            timeout-ms = <50>;
-            require-prior-idle-ms = <50>;
-            key-positions = <17 18>;
-            bindings = <&kp ESC>;
-        };
-
-        combo_jk {
-            timeout-ms = <50>;
-            require-prior-idle-ms = <50>;
-            key-positions = <23 24>;
-            bindings = <&kp ESC>;
-        };
-    };
-
     keymap {
         compatible = "zmk,keymap";
 
         default_layer {
             display-name = "MAIN";
             // ----------------------------------------------------------------------------------------
-            // | TAB |  Q  |  W  |  E  |  R  |  T  |      |      |  Y  |  U  |  I  |  O  |  P  | BSPC|
-            // |CT/ES|GUI/A|ALT/S|CTL/D|SFT/F|  G  | VOL- | VOL- |  H  |SFT/J|CTL/K|ALT/L|GUI/;|  '  |
-            // | SHFT|  Z  |  X  |  C  |  V  |  B  |             |  N  |  M  |  ,  |  .  |  /  | SHFT|
+            // | TAB |  Q  |  W  |  E  |  R  |  T  |      |      |  Y  |  U  |  I  |  O  |ALG/P| BSPC|
+            // |CT/ES|GUI/A|ALT/S|CTL/D|SFT/F|LT1/G| VOL- | VOL- |LT1/H|SFT/J|CTL/K|ALT/L|GUI/;|  '  |
+            // | SHFT|  Z  |  X  |  C  |  V  |LT2/B|             |LT2/N|  M  |  ,  |  .  |  /  | SHFT|
             //                   | ALT | MO1 | SPC |             | RET | MO2 | ALT |
             bindings = <
-&mt LGUI TAB    &kp Q           &kp W           &kp E           &kp R           &kp T           &none           &none           &kp Y           &kp U           &kp I           &kp O           &kp P           &kp BSPC
-&mt LCTRL ESC   &hml LGUI A     &hml LALT S     &hml LCTRL D    &hml LSHIFT F   &lt 2 G         &none           &none           &lt 2 H         &hmr RSHIFT J   &hmr RCTL K     &hmr RALT L     &hmr RGUI SEMI  &mt RCTRL SQT
-&kp LSHFT       &kp Z           &kp X           &kp C           &kp V           &kp B                                           &kp N           &kp M           &kp COMMA       &kp DOT         &kp FSLH        &kp RSHIFT
+&mt LGUI TAB    &kp Q           &kp W           &kp E           &kp R           &kp T           &none           &none           &kp Y           &kp U           &kp I           &kp O           &hmr RALT P     &kp BSPC
+&mt LCTRL ESC   &hml LGUI A     &hml LALT S     &hml LCTRL D    &hml LSHIFT F   &lt 1 G         &none           &none           &lt 1 H         &hmr RSHIFT J   &hmr RCTL K     &hmr LALT L     &hmr RGUI SEMI  &mt RCTRL SQT
+&kp LSHFT       &kp Z           &kp X           &kp C           &kp V           &lt 2 B                                         &lt 2 N         &kp M           &kp COMMA       &kp DOT         &kp FSLH        &kp RSHIFT
                                                 &kp LALT        &mo 1           &kp SPACE                                       &kp RET         &mo 2           &kp RALT
             >;
             sensor-bindings = <&inc_dec_kp C_VOL_DN C_VOL_UP &inc_dec_kp PG_UP PG_DN &inc_dec_kp C_PREV C_NEXT &inc_dec_kp C_BRI_DN C_BRI_UP>;
         };
 
-        numbers_layer {
+        numbers_layer { // 1
             display-name = "NUMBERS";
             // -----------------------------------------------------------------------------------------
             // |  `  |  1  |  2  |  3  |  4  |  5  |       |       |  6  |  7  |  8  |  9  |  0  |     |
-            // |     | VOL-| MUTE| VOL+|  `  |  =  |       |       |  -  |  [  |  ]  |     |     |     |
-            // |     | PREV| PLAY| PREV|  ~  |  +  |               |  _  |  {  |  }  |     |  \  |  |  |
-            //                   |     |     |     |               | BSPC| MO3 |     |
+            // |     |     |     |     |  `  |  =  |       |       |  -  |  [  |  ]  |     | BSPC| DEL |
+            // |     |     |     |     |  ~  |  +  |               |  _  |  {  |  }  |     |  \  |  |  |
+            //                   | MO3 |     |     |               | BSPC| MO5 |     |
             bindings = <
 &kp GRAVE       &kp N1          &kp N2          &kp N3          &kp N4          &kp N5          &trans          &trans          &kp N6          &kp N7          &kp N8          &kp N9          &kp N0          &trans
-&trans          &kp C_VOL_DN    &kp C_MUTE      &kp C_VOL_UP    &kp GRAVE       &kp EQUAL       &trans          &trans          &kp MINUS       &kp LBKT        &kp RBKT        &none           &none           &kp DELETE
-&trans          &kp C_PREV      &kp C_PP        &kp C_NEXT      &kp TILDE       &kp PLUS                                        &kp UNDER       &kp LBRC        &kp RBRC        &none           &kp BSLH        &kp PIPE
-                                                &trans          &trans          &trans                                          &kp BSPC        &mo 3           &trans
+&trans          &none           &none           &none           &kp GRAVE       &kp EQUAL       &trans          &trans          &kp MINUS       &kp LBKT        &kp RBKT        &none           &kp BSPC        &kp DELETE
+&trans          &none           &none           &none           &kp TILDE       &kp PLUS                                        &kp UNDER       &kp LBRC        &kp RBRC        &none           &kp BSLH        &kp PIPE
+                                                &mo 3           &trans          &trans                                          &kp BSPC        &mo 5           &trans
             >;
         };
 
-        symbols_layer {
+        symbols_layer { // 2
             display-name = "SYMBOLS";
             // -----------------------------------------------------------------------------------------
             // |  ~  |  !  |  @  |  #  |  $  |  %  |       |       |  ^  |  &  |  *  |  (  |  )  |     |
-            // |     | GUI | ALT | CTL | SFT |     |       |       | LFT | DWN |  UP | RGT | PRSC|     |
-            // |     |     |     |     |     |     |               | HOME| PGDN| PGUP| END |  \  |  |  |
-            //                   |     | MO4 | BSPC|               |     |     | MO3 |
+            // |     | GUI | ALT | CTL | SFT |     |       |       | LFT | DWN |  UP | RGT | BSPC| DEL |
+            // |     | TAB |     | ESC |     |     |               | HOME| PGDN| PGUP| END |  \  |  |  |
+            //                   |     | MO5 |     |               |     |     | MO4 |
             bindings = <
 &kp TILDE       &kp LS(N1)      &kp LS(N2)      &kp LS(N3)      &kp LS(N4)      &kp LS(N5)      &trans          &trans          &kp LS(N6)      &kp LS(N7)      &kp LS(N8)      &kp LS(N9)      &kp LS(N0)      &trans
-&trans          &kp LGUI        &kp LALT        &kp LCTL        &kp LSFT        &none           &trans          &trans          &kp LEFT        &kp DOWN        &kp UP          &kp RIGHT       &kp PSCRN       &kp DELETE
-&trans          &none           &none           &none           &none           &none                                           &kp HOME        &kp PG_DN       &kp PG_UP       &kp END         &kp BSLH        &kp PIPE
-                                                &trans          &mo 4           &kp BSPC                                        &trans          &trans          &mo 3
+&trans          &kp LGUI        &kp LALT        &kp LCTL        &kp LSFT        &none           &trans          &trans          &kp LEFT        &kp DOWN        &kp UP          &kp RIGHT       &kp BSPC        &kp DELETE
+&trans          &kp TAB         &none           &kp ESC         &none           &none                                           &kp HOME        &kp PG_DN       &kp PG_UP       &kp END         &kp BSLH        &kp PIPE
+                                                &trans          &mo 5           &trans                                          &trans          &trans          &mo 4
             >;
         };
 
-        fkeys_layer {
-            display-name = "FKEYS";
+        extra1_layer { // 3
+            display-name = "FK/MED";
             // -----------------------------------------------------------------------------------------
             // | F12 |  F1 |  F2 |  F3 |  F4 |  F5 |       |       |  F6 |  F7 |  F8 |  F9 | F10 | F11 |
-            // |     |     |     |     |     |     |       |       |     |     |     |     |     |     |
-            // |     |     |     |     |     |     |               |     |     |     |     |     |     |
+            // |     |VOLDN| MUTE|VOLUP|CPSWD|     |       |       |     |CPSWD|     |     |PSCRN|     |
+            // |     |MPREV| MPP |MNEXT|     |     |               |     |     |     |     |     |     |
             //                   |     |     |     |               |     |     |     |
             bindings = <
 &kp F12         &kp F1          &kp F2          &kp F3          &kp F4          &kp F5          &trans          &trans          &kp F6          &kp F7          &kp F8          &kp F9          &kp F10         &kp F11
-&trans          &none           &none           &none           &none           &none           &trans          &trans          &none           &none           &none           &none           &none           &none
-&trans          &none           &none           &none           &none           &none                                           &none           &none           &none           &none           &none           &none
+&trans          &kp C_VOL_DN    &kp C_MUTE      &kp C_VOL_UP    &caps_word      &none           &trans          &trans          &none           &caps_word      &none           &none           &kp PSCRN       &trans
+&trans          &kp C_PREV      &kp C_PP        &kp C_NEXT      &none           &none                                           &none           &none           &none           &none           &none           &trans
                                                 &trans          &trans          &trans                                          &trans          &trans          &trans
             >;
         };
 
-        btms_layer {
-            display-name = "BT/MS";
+        extra2_layer { // 4
+            display-name = "FK/MS";
             // -----------------------------------------------------------------------------------------
-            // |      | BT0 | BT1 | BT2 | BT3 | BT4 |       |       |BTDC0|BTDC1|BTDC2|BTDC3|BTDC4|     |
-            // |      |     |     |     |     |     |       |       | MLFT| MDN | MUP | MRGT|     |UNLCK|
-            // |      |BTDC0|BTDC1|BTDC2|BTDC3|BTDC4|               | LCLK| MCLK| RCLK|     |     |     |
-            //                    |     |     |     |               |     |     | MO5 |
+            // | F12 |  F1 |  F2 |  F3 |  F4 |  F5 |       |       |  F6 |  F7 |  F8 |  F9 | F10 | F11 |
+            // |     |     |     |     |CPSWD|     |       |       | MLFT| MDN | MUP | MRGT|PSCRN|     |
+            // |     |     |     |     |     |     |               | LCLK| MCLK| RCLK|     |     |     |
+            //                   |     |     |     |               |     |     |     |
+            bindings = <
+&kp F12         &kp F1          &kp F2          &kp F3          &kp F4          &kp F5          &trans          &trans          &kp F6          &kp F7          &kp F8          &kp F9          &kp F10         &kp F11
+&trans          &none           &none           &none           &caps_word      &none           &trans          &trans          &mmv MOVE_LEFT  &mmv MOVE_DOWN  &mmv MOVE_UP    &mmv MOVE_RIGHT &kp PSCRN       &trans
+&trans          &none           &none           &none           &none           &none                                           &mkp LCLK       &mkp MCLK       &mkp RCLK       &none           &none           &trans
+                                                &trans          &trans          &trans                                          &trans          &trans          &trans
+            >;
+        };
+
+        btrgb_layer { // 5
+            display-name = "BT/RGB";
+            // -----------------------------------------------------------------------------------------
+            // |     | BT0 | BT1 | BT2 | BT3 | BT4 |       |       |BTDC0|BTDC1|BTDC2|BTDC3|BTDC4|     |
+            // |     |RGBB+|RGBTG|RGBB-|     |     |       |       |RGBE-|RGBTB|RGBE+|     |     |UNLCK|
+            // |     |RGBH+|RGBTG|RGBH+|     |     |               |     |     |     |     |     |     |
+            //                   |     |     |     |               |     |     |     |
             bindings = <
 &trans          &bt BT_SEL 0    &bt BT_SEL 1    &bt BT_SEL 2    &bt BT_SEL 3    &bt BT_SEL 4    &trans          &trans          &bt BT_DISC 0   &bt BT_DISC 1   &bt BT_DISC 2   &bt BT_DISC 3   &bt BT_DISC 4   &trans
-&trans          &trans          &trans          &trans          &trans          &trans          &trans          &trans          &mmv MOVE_LEFT  &mmv MOVE_DOWN  &mmv MOVE_UP    &mmv MOVE_RIGHT &none           &studio_unlock
-&trans          &trans          &trans          &trans          &trans          &trans                                          &mkp LCLK       &mkp MCLK       &mkp RCLK       &none           &none           &trans
-                                                &trans          &trans          &trans                                          &trans          &trans          &mo 5
-            >;
-        };
-
-        rgb_layer {
-            display-name = "RGB";
-            bindings = <
-&trans          &rgb_ug RGB_EFR &rgb_ug RGB_TOG &rgb_ug RGB_EFF &trans          &trans          &trans          &trans          &trans          &trans          &trans          &trans          &trans          &trans
-&trans          &rgb_ug RGB_BRD &rgb_ug RGB_TOG &rgb_ug RGB_BRI &trans          &trans          &trans          &trans          &trans          &trans          &trans          &trans          &trans          &trans
-&trans          &rgb_ug RGB_HUD &rgb_ug RGB_TOG &rgb_ug RGB_HUI &trans          &trans                                          &trans          &trans          &trans          &trans          &trans          &trans
-                                                &trans          &trans          &trans                                          &trans          &trans          &trans
-            >;
-        };
-
-        extra_layer_1 {
-            display-name = "EXTRA 1";
-            bindings = <
-&trans          &trans          &trans          &trans          &trans          &trans          &trans          &trans          &trans          &trans          &trans          &trans          &trans          &trans
-&trans          &trans          &trans          &trans          &trans          &trans          &trans          &trans          &trans          &trans          &trans          &trans          &trans          &trans
-&trans          &trans          &trans          &trans          &trans          &trans                                          &trans          &trans          &trans          &trans          &trans          &trans
-                                                &trans          &trans          &trans                                          &trans          &trans          &trans
-            >;
-        };
-
-        extra_layer_2 {
-            display-name = "EXTRA 2";
-            bindings = <
-&trans          &trans          &trans          &trans          &trans          &trans          &trans          &trans          &trans          &trans          &trans          &trans          &trans          &trans
-&trans          &trans          &trans          &trans          &trans          &trans          &trans          &trans          &trans          &trans          &trans          &trans          &trans          &trans
-&trans          &trans          &trans          &trans          &trans          &trans                                          &trans          &trans          &trans          &trans          &trans          &trans
-                                                &trans          &trans          &trans                                          &trans          &trans          &trans
-            >;
-        };
-
-        extra_layer_3 {
-            display-name = "EXTRA 3";
-            bindings = <
-&trans          &trans          &trans          &trans          &trans          &trans          &trans          &trans          &trans          &trans          &trans          &trans          &trans          &trans
-&trans          &trans          &trans          &trans          &trans          &trans          &trans          &trans          &trans          &trans          &trans          &trans          &trans          &trans
-&trans          &trans          &trans          &trans          &trans          &trans                                          &trans          &trans          &trans          &trans          &trans          &trans
-                                                &trans          &trans          &trans                                          &trans          &trans          &trans
-            >;
-        };
-
-        extra_layer_4 {
-            display-name = "EXTRA 4";
-            bindings = <
-&trans          &trans          &trans          &trans          &trans          &trans          &trans          &trans          &trans          &trans          &trans          &trans          &trans          &trans
-&trans          &trans          &trans          &trans          &trans          &trans          &trans          &trans          &trans          &trans          &trans          &trans          &trans          &trans
-&trans          &trans          &trans          &trans          &trans          &trans                                          &trans          &trans          &trans          &trans          &trans          &trans
+&trans          &rgb_ug RGB_BRD &rgb_ug RGB_TOG &rgb_ug RGB_BRI &trans          &trans          &trans          &trans          &rgb_ug RGB_EFR &rgb_ug RGB_TOG &rgb_ug RGB_EFF &none           &none           &studio_unlock
+&trans          &rgb_ug RGB_HUD &rgb_ug RGB_TOG &rgb_ug RGB_HUI &trans          &trans                                          &none           &none           &none           &none           &none           &trans
                                                 &trans          &trans          &trans                                          &trans          &trans          &trans
             >;
         };
