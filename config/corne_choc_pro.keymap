@@ -52,59 +52,6 @@
         };
     };
 
-    combos {
-        compatible = "zmk,combos";
-
-        combo_ltab {
-            timeout-ms = <50>;
-            require-prior-idle-ms = <50>;
-            key-positions = <2 3>;
-            bindings = <&kp TAB>;
-        };
-
-        combo_lcw {
-            timeout-ms = <50>;
-            require-prior-idle-ms = <50>;
-            key-positions = <3 5>;
-            bindings = <&caps_word>;
-        };
-
-        combo_rcw {
-            timeout-ms = <50>;
-            require-prior-idle-ms = <50>;
-            key-positions = <8 10>;
-            bindings = <&caps_word>;
-        };
-
-        combo_rbs {
-            timeout-ms = <50>;
-            require-prior-idle-ms = <50>;
-            key-positions = <10 11>;
-            bindings = <&kp BSPC>;
-        };
-
-        combo_rdel {
-            timeout-ms = <50>;
-            require-prior-idle-ms = <50>;
-            key-positions = <11 12>;
-            bindings = <&kp DELETE>;
-        };
-
-        combo_lesc {
-            timeout-ms = <50>;
-            require-prior-idle-ms = <50>;
-            key-positions = <17 18>;
-            bindings = <&kp ESC>;
-        };
-
-        combo_resc {
-            timeout-ms = <50>;
-            require-prior-idle-ms = <50>;
-            key-positions = <23 24>;
-            bindings = <&kp ESC>;
-        };
-    };
-
     keymap {
         compatible = "zmk,keymap";
 
