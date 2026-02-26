@@ -69,12 +69,12 @@
             // |  `  |  1  |  2  |  3  |  4  |  5  |v|v|  6  |  7  |  8  |  9  |  0  |  v  |
             // |  v  | TAB | LALT| LCTL| LSFT|  =  |v|v|  -  | RSFT| RCTL| LALT| BSPC|  v  |
             // |  v  | ESC |     |  {  |  [  |  +  |   |  _  |  ]  |  }  |     | DEL |  v  |
-            //                   |  v  |  v  | TO3 |   |  v  | MO5 |  v  |
+            //                   |  v  |  v  | MO3 |   |  v  | MO5 |  v  |
             bindings = <
 &kp GRAVE       &kp N1          &kp N2          &kp N3          &kp N4          &kp N5        &trans  &trans  &kp N6          &kp N7          &kp N8          &kp N9          &kp N0          &trans
 &trans          &kp TAB         &kp LALT        &kp LCTL        &kp LSFT        &kp EQUAL     &trans  &trans  &kp MINUS       &kp RSFT        &kp RCTL        &kp LALT        &kp BSPC        &trans
 &trans          &kp ESC         &none           &kp LBRC        &kp LBKT        &kp PLUS                      &kp UNDER       &kp RBKT        &kp RBRC        &none           &kp DELETE      &trans
-                                                &trans          &trans          &to 3                         &trans          &mo 5           &trans
+                                                &trans          &trans          &mo 3                         &trans          &mo 5           &trans
             >;
         };
 
@@ -84,12 +84,12 @@
             // |  ~  |  !  |  @  |  #  |  $  |  %  |v|v|  ^  |  &  |  *  |  (  |  )  |  v  |
             // |  v  | TAB | LALT| LCTL| LSFT|     |v|v| LFT | DWN |  UP | RGT | BSPC| DEL |
             // |  v  | ESC |  `  |  ~  |  '  |  "  |   | HOME| PGDN| PGUP| END |  \  |  |  |
-            //                   |  v  | MO5 |  v  |   | TO4 |  v  |  v  |
+            //                   |  v  | MO5 |  v  |   | MO4 |  v  |  v  |
             bindings = <
 &kp TILDE       &kp LS(N1)      &kp LS(N2)      &kp LS(N3)      &kp LS(N4)      &kp LS(N5)    &trans  &trans  &kp LS(N6)      &kp LS(N7)      &kp LS(N8)      &kp LS(N9)      &kp LS(N0)      &trans
 &trans          &kp TAB         &kp LALT        &kp LCTL        &kp LSFT        &none         &trans  &trans  &kp LEFT        &kp DOWN        &kp UP          &kp RIGHT       &kp BSPC        &kp DELETE
 &trans          &kp ESC         &kp GRAVE       &kp TILDE       &kp SQT         &kp DQT                       &kp HOME        &kp PG_DN       &kp PG_UP       &kp END         &kp BSLH        &kp PIPE
-                                                &trans          &mo 5           &trans                        &to 4           &trans          &trans
+                                                &trans          &mo 5           &trans                        &mo 4           &trans          &trans
             >;
         };
 
@@ -99,12 +99,12 @@
             // | F12 |  F1 |  F2 |  F3 |  F4 |  F5 |v|v|  F6 |  F7 |  F8 |  F9 | F10 | F11 |
             // |  v  |VOLDN| MUTE|VOLUP|CPSWD|     |v|v|     |CPSWD|     |     |PSCRN|  v  |
             // |  v  |MPREV| MPP |MNEXT|     |     |   |     |     |     |     |     |  v  |
-            //                   |  v  | TO0 |  v  |   |  v  | TO0 |  v  |
+            //                   |  v  |  v  |  v  |   |  v  |  v  |  v  |
             bindings = <
 &kp F12         &kp F1          &kp F2          &kp F3          &kp F4          &kp F5        &trans  &trans  &kp F6          &kp F7          &kp F8          &kp F9          &kp F10         &kp F11
 &trans          &kp C_VOL_DN    &kp C_MUTE      &kp C_VOL_UP    &caps_word      &none         &trans  &trans  &none           &caps_word      &none           &none           &kp PSCRN       &trans
 &trans          &kp C_PREV      &kp C_PP        &kp C_NEXT      &none           &none                         &none           &none           &none           &none           &none           &trans
-                                                &trans          &to 0           &trans                        &trans          &to 0           &trans
+                                                &trans          &trans          &trans                        &trans          &trans          &trans
             >;
         };
 
@@ -114,12 +114,12 @@
             // | F12 |  F1 |  F2 |  F3 |  F4 |  F5 |v|v|  F6 |  F7 |  F8 |  F9 | F10 | F11 |
             // |  v  |     |     |     |CPSWD|     |v|v| MLFT| MDN | MUP | MRGT|PSCRN|  v  |
             // |  v  |     |     |     |     |     |   | LCLK| MCLK| RCLK|     |     |  v  |
-            //                   |  v  | TO0 |  v  |   |  v  | TO0 |  v  |
+            //                   |  v  |  v  |  v  |   |  v  |  v  |  v  |
             bindings = <
 &kp F12         &kp F1          &kp F2          &kp F3          &kp F4          &kp F5        &trans  &trans  &kp F6          &kp F7          &kp F8          &kp F9          &kp F10         &kp F11
 &trans          &none           &none           &none           &caps_word      &none         &trans  &trans  &mmv MOVE_LEFT  &mmv MOVE_DOWN  &mmv MOVE_UP    &mmv MOVE_RIGHT &kp PSCRN       &trans
 &trans          &none           &none           &none           &none           &none                         &mkp LCLK       &mkp MCLK       &mkp RCLK       &none           &none           &trans
-                                                &trans          &to 0           &trans                        &trans          &to 0           &trans
+                                                &trans          &trans          &trans                        &trans          &trans          &trans
             >;
         };
 
