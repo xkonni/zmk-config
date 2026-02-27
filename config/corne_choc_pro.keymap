@@ -69,6 +69,16 @@
             quick-tap-ms = <175>;           // if a key is released within this time, it will always register as a tap (default 0, disabled)
             bindings = <&mo>, <&kp>;
         };
+
+        /* Mod tap with quick-tap-ms. */
+        mtq: behavior_mod_tap {
+            compatible = "zmk,behavior-hold-tap";
+            #binding-cells = <2>;
+            flavor = "tap-preferred";
+            tapping-term-ms = <200>;        // how long a key needs to be pressed to register as a hold (default 200)
+            quick-tap-ms = <175>;           // if a key is released within this time, it will always register as a tap (default 0, disabled)
+            bindings = <&kp>, <&kp>;
+        };
     };
 
     keymap {
@@ -79,8 +89,8 @@
             bindings = <
 &none           &kp Q           &kp W           &kp E           &kp R           &ltq 3 T      &none   &none   &kp Y           &kp U           &kp I           &kp O           &hmr RALT P     &none
 &none           &hml LGUI A     &hml LALT S     &hml LCTRL D    &hml LSHIFT F   &ltq 1 G      &none   &none   &ltq 1 H        &hmr RSHIFT J   &hmr RCTL K     &hmr LALT L     &hmr RGUI SEMI  &none
-&mt LSHFT TAB   &kp Z           &kp X           &kp C           &kp V           &ltq 2 B                      &ltq 2 N        &kp M           &kp COMMA       &kp DOT         &kp FSLH        &mt RSHIFT BSPC
-                                                &kp LALT        &ltq 1 ESC      &kp SPACE                     &kp RET         &ltq 2 TAB       &kp LALT
+&mt LSHFT TAB   &kp Z           &kp X           &kp C           &kp V           &ltq 2 B                      &ltq 2 N        &kp M           &kp COMMA       &kp DOT         &kp FSLH        &mtq RSHIFT BSPC
+                                                &kp LALT        &ltq 1 ESC      &kp SPACE                     &kp RET         &kp TAB          &kp LALT
             >;
             sensor-bindings = <&inc_dec_kp C_VOL_DN C_VOL_UP &inc_dec_kp PG_UP PG_DN &inc_dec_kp C_PREV C_NEXT &inc_dec_kp C_BRI_DN C_BRI_UP>;
         };
