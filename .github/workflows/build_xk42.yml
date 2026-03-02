@@ -6,7 +6,7 @@ on:
     branches-ignore:
       - main
     paths:
-      - "boards/arm/xk42/**"
+      - "boards/shields/xk42/**"
       - "config/xk42.*"
       - "build_xk42.yaml"
       - "config/west.yml"
