@@ -16,6 +16,10 @@ config NFCT_PINS_AS_GPIOS
 config BT_GATT_ENFORCE_SUBSCRIPTION
     default n
 
+# Improved connection stability
+config ZMK_BLE_EXPERIMENTAL_CONN
+    default y
+
 # Enable RGB underglow
 config ZMK_RGB_UNDERGLOW
     default y
@@ -34,6 +38,9 @@ config ZMK_RGB_UNDERGLOW_SAT_START
 
 # Enable I2C for fuel gauge
 config I2C
+    default y
+
+config SPI
     default y
 
 endif
