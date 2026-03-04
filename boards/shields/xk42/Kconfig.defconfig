@@ -8,6 +8,10 @@ config ZMK_KEYBOARD_NAME
 config ZMK_SPLIT
     default y
 
+# Enable deep sleep
+config ZMK_SLEEP
+    default y
+
 # Allow P1.00 (NFC pin) to be used as GPIO (Row 2)
 config NFCT_PINS_AS_GPIOS
     default y
@@ -16,7 +20,11 @@ config NFCT_PINS_AS_GPIOS
 config BT_GATT_ENFORCE_SUBSCRIPTION
     default n
 
-# Improved connection stability
+# ImproveZMK Studio (alpha)
+config ZMK_STUDIO
+    default y
+
+# Enable d connection stability
 config ZMK_BLE_EXPERIMENTAL_CONN
     default y
 
