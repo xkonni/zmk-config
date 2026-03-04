@@ -6,7 +6,7 @@ on:
     branches-ignore:
       - main
     paths:
-      - "boards/arm/xk42/**"
+      - "boards/shields/xk42/**"
       - "config/xk42.*"
       - "build_xk42.yaml"
       - "config/west.yml"
@@ -30,7 +30,7 @@ jobs:
   build:
     name: Build xk42
     needs: draw
-    uses: zmkfirmware/zmk/.github/workflows/build-user-config.yml@main
+    uses: zmkfirmware/zmk/.github/workflows/build-user-config.yml@v0.3
     with:
       build_matrix_path: build_xk42.yaml
       archive_name: xk42-firmware
