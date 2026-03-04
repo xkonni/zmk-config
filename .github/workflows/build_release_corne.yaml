@@ -6,13 +6,13 @@ on:
     branches:
       - main
     paths:
-      - 'boards/arm/corne_choc_pro/**'
-      - 'config/corne_choc_pro.*'
-      - 'build_corne.yaml'
-      - 'config/west.yml'
-      - 'zephyr/**'
+      - "boards/arm/corne_choc_pro/**"
+      - "config/corne_choc_pro.*"
+      - "build_corne.yaml"
+      - "config/west.yml"
+      - "zephyr/**"
     tags:
-      - 'build'
+      - "build"
 permissions:
   contents: write
 
@@ -27,11 +27,11 @@ jobs:
       destination: artifact
       artifact_name: corne-keymap
       fail_on_error: true
-      keymap_patterns: 'config/corne_choc_pro.keymap'
+      keymap_patterns: "config/corne_choc_pro.keymap"
   build:
     name: Build Corne
     needs: draw
-    uses: zmkfirmware/zmk/.github/workflows/build-user-config.yml@main
+    uses: zmkfirmware/zmk/.github/workflows/build-user-config.yml@v0.3
     with:
       build_matrix_path: build_corne.yaml
       archive_name: corne-firmware

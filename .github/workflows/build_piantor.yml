@@ -6,13 +6,13 @@ on:
     branches-ignore:
       - main
     paths:
-      - 'boards/arm/piantor_pro_bt/**'
-      - 'config/piantor_pro_bt.*'
-      - 'build_piantor.yaml'
-      - 'config/west.yml'
-      - 'zephyr/**'
+      - "boards/arm/piantor_pro_bt/**"
+      - "config/piantor_pro_bt.*"
+      - "build_piantor.yaml"
+      - "config/west.yml"
+      - "zephyr/**"
     tags:
-      - 'build'
+      - "build"
 permissions:
   contents: write
 
@@ -26,11 +26,11 @@ jobs:
       destination: artifact
       artifact_name: piantor-keymap
       fail_on_error: true
-      keymap_patterns: 'config/piantor_pro_bt.keymap'
+      keymap_patterns: "config/piantor_pro_bt.keymap"
   build:
     name: Build Piantor Pro BT
     needs: draw
-    uses: zmkfirmware/zmk/.github/workflows/build-user-config.yml@main
+    uses: zmkfirmware/zmk/.github/workflows/build-user-config.yml@v0.3
     with:
       build_matrix_path: build_piantor.yaml
       archive_name: piantor-firmware

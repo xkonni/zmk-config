@@ -6,13 +6,13 @@ on:
     branches:
       - main
     paths:
-      - 'boards/shields/xk42/**'
-      - 'config/xk42.*'
-      - 'build_xk42.yaml'
-      - 'config/west.yml'
-      - 'zephyr/**'
+      - "boards/shields/xk42/**"
+      - "config/xk42.*"
+      - "build_xk42.yaml"
+      - "config/west.yml"
+      - "zephyr/**"
     tags:
-      - 'build'
+      - "build"
 permissions:
   contents: write
 
@@ -27,11 +27,11 @@ jobs:
       destination: artifact
       artifact_name: xk42-keymap
       fail_on_error: true
-      keymap_patterns: 'config/xk42.keymap'
+      keymap_patterns: "config/xk42.keymap"
   build:
     name: Build xk42
     needs: draw
-    uses: zmkfirmware/zmk/.github/workflows/build-user-config.yml@main
+    uses: zmkfirmware/zmk/.github/workflows/build-user-config.yml@v0.3
     with:
       build_matrix_path: build_xk42.yaml
       archive_name: xk42-firmware
