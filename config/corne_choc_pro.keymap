@@ -18,17 +18,17 @@
     combos {
         compatible = "zmk,combos";
 
-        combo_sd {
+        combo_cv {
             timeout-ms = <50>;
             require-prior-idle-ms = <50>;
-            key-positions = <16 17>;
+            key-positions = <31 32>;
             bindings = <&kp ESC>;
         };
 
-        combo_kl {
+        combo_mcomma {
             timeout-ms = <50>;
             require-prior-idle-ms = <50>;
-            key-positions = <24 25>;
+            key-positions = <35 36>;
             bindings = <&kp ESC>;
         };
     };
@@ -88,9 +88,9 @@
             display-name = "MAIN";
             bindings = <
 &none           &kp Q           &kp W           &kp E           &kp R           &ltq 3 T      &none   &none   &kp Y           &kp U           &kp I           &kp O           &hmr RALT P     &none
-&none           &hml LGUI A     &hml LALT S     &hml LCTRL D    &hml LSHIFT F   &ltq 1 G      &none   &none   &ltq 1 H        &hmr RSHIFT J   &hmr RCTL K     &hmr LALT L     &hmr RGUI SEMI  &none
-&mt LSHFT TAB   &kp Z           &kp X           &kp C           &kp V           &ltq 2 B                      &ltq 2 N        &kp M           &kp COMMA       &kp DOT         &kp FSLH        &mtq RSHIFT BSPC
-                                                &kp LALT        &ltq 1 ESC      &kp SPACE                     &kp RET         &kp TAB          &kp LALT
+&mt LSHFT ESC   &hml LGUI A     &hml LALT S     &hml LCTRL D    &hml LSHFT F    &ltq 1 G      &none   &none   &ltq 1 H        &hmr RSHFT J    &hmr RCTL K     &hmr LALT L     &hmr RGUI SEMI  &mtq RSHFT BSPC
+&mt LCTRL TAB   &kp Z           &kp X           &kp C           &kp V           &ltq 2 B                      &ltq 2 N        &kp M           &kp COMMA       &kp DOT         &kp FSLH        &mtq RCTRL DEL
+                                                &kp LALT        &ltq 1 ESC      &kp SPACE                     &kp RET         &kp TAB         &kp LALT
             >;
             sensor-bindings = <&inc_dec_kp C_VOL_DN C_VOL_UP &inc_dec_kp PG_UP PG_DN &inc_dec_kp C_PREV C_NEXT &inc_dec_kp C_BRI_DN C_BRI_UP>;
         };
@@ -139,8 +139,8 @@
             display-name = "BT/RGB";
             bindings = <
 &trans          &bt BT_SEL 0    &bt BT_SEL 1    &bt BT_SEL 2    &bt BT_SEL 3    &bt BT_SEL 4  &trans  &trans  &bt BT_DISC 0   &bt BT_DISC 1   &bt BT_DISC 2   &bt BT_DISC 3   &bt BT_DISC 4   &trans
-&trans          &rgb_ug RGB_BRD &rgb_ug RGB_TOG &rgb_ug RGB_BRI &none           &none         &trans  &trans  &rgb_ug RGB_EFR &rgb_ug RGB_TOG &rgb_ug RGB_EFF &none           &none           &trans
-&trans          &rgb_ug RGB_HUD &rgb_ug RGB_TOG &rgb_ug RGB_HUI &none           &none                         &none           &none           &none           &none           &none           &studio_unlock
+&studio_unlock  &rgb_ug RGB_BRD &rgb_ug RGB_TOG &rgb_ug RGB_BRI &none           &none         &trans  &trans  &rgb_ug RGB_EFR &rgb_ug RGB_TOG &rgb_ug RGB_EFF &none           &none           &studio_unlock
+&bootloader     &rgb_ug RGB_HUD &rgb_ug RGB_TOG &rgb_ug RGB_HUI &none           &none                         &none           &none           &none           &none           &none           &bootloader
                                                 &trans          &trans          &trans                        &trans          &trans          &trans
             >;
         };
