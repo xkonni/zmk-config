@@ -42,7 +42,11 @@ config ZMK_RGB_UNDERGLOW_HUE_START
     default 48
 
 config ZMK_RGB_UNDERGLOW_SAT_START
-    default 96
+    default 100
+
+# Stop RGB underglow from turning off VCC power which kills the display
+config ZMK_RGB_UNDERGLOW_EXT_POWER
+    default n
 
 # Enable I2C for fuel gauge
 config I2C
