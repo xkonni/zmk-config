@@ -20,14 +20,6 @@ config NFCT_PINS_AS_GPIOS
 config BT_GATT_ENFORCE_SUBSCRIPTION
     default n
 
-# ImproveZMK Studio (alpha)
-config ZMK_STUDIO
-    default y
-
-# Enable d connection stability
-config ZMK_BLE_EXPERIMENTAL_CONN
-    default y
-
 # Enable RGB underglow
 config ZMK_RGB_UNDERGLOW
     default y
