@@ -6,6 +6,7 @@ _build() {
     local BOARD=$1
     local SHIELD=$2
     local BUILD_NAME=$3
+    local EXTRA_CMAKE_OPTS=$4
     [ -z "$BOARD" ] && { echo "No board specified. Returning."; return 1; }
     echo "Building the project for board: $BOARD, shield: $SHIELD"
     west build \
@@ -15,10 +16,11 @@ _build() {
     --snippet studio-rpc-usb-uart \
     -d $BUILD_DIR/$BUILD_NAME \
     -- -DZMK_CONFIG=/workspaces/zmk-config/config \
-       -DZMK_EXTRA_MODULES=/workspaces/zmk-config \
+       -DZMK_EXTRA_MODULES="/workspaces/zmk-config;/workspaces/nice-view-glyphs" \
        -DSHIELD="$SHIELD" \
        -DCONFIG_ZMK_STUDIO=y \
-       -DCONFIG_ZMK_STUDIO_LOCKING=n
+       -DCONFIG_ZMK_STUDIO_LOCKING=n \
+       ${EXTRA_CMAKE_OPTS}
 
     if [ $? -eq 0 ]; then
         mkdir -p $BUILD_DIR
@@ -41,11 +43,11 @@ case "$1" in
         _build "nice_nano_v2" "xk42_left nice_view" "xk42_left"
         ;;
     "xk42_right"|"right")
-        _build "nice_nano_v2" "xk42_right nice_view" "xk42_right"
+        _build "nice_nano_v2" "xk42_right nice_view_glyphs" "xk42_right" "-DCONFIG_NICE_VIEW_WIDGET_PATTERN=4"
         ;;
     "xk42")
         _build "nice_nano_v2" "xk42_left nice_view" "xk42_left"
-        _build "nice_nano_v2" "xk42_right nice_view" "xk42_right"
+        _build "nice_nano_v2" "xk42_right nice_view_glyphs" "xk42_right" "-DCONFIG_NICE_VIEW_WIDGET_PATTERN=4"
         ;;
     *)
         echo "Unknown target: $1"
