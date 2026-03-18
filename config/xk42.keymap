@@ -18,17 +18,17 @@
     combos {
         compatible = "zmk,combos";
 
-        combo_cv {
+        combo_df {
             timeout-ms = <50>;
             require-prior-idle-ms = <50>;
-            key-positions = <27 28>;
+            key-positions = <15 16>;
             bindings = <&kp ESC>;
         };
 
-        combo_mcomma {
+        combo_jk {
             timeout-ms = <50>;
             require-prior-idle-ms = <50>;
-            key-positions = <31 32>;
+            key-positions = <19 20>;
             bindings = <&kp ESC>;
         };
     };
@@ -39,9 +39,9 @@
             compatible = "zmk,behavior-hold-tap";
             #binding-cells = <2>;
             flavor = "balanced";
-            tapping-term-ms = <250>;        // how long a key needs to be pressed to register as a hold (default 200)
+            tapping-term-ms = <220>;        // how long a key needs to be pressed to register as a hold (default 200)
             quick-tap-ms = <175>;           // if a key is released within this time, it will always register as a tap (default 0, disabled)
-            require-prior-idle-ms = <150>;  // how long before a tap that the key must have been idle to register as a hold (default 0, disabled)
+            require-prior-idle-ms = <100>;  // how long before a tap that the key must have been idle to register as a hold (default 0, disabled)
             bindings = <&kp>, <&kp>;
             hold-trigger-key-positions = <KEYS_L THUMBS>; // Trigger hold when pressing opposite hand (prevents accidental mods on single hand)
             hold-trigger-on-release;        // Trigger hold on key release (instead of key press)
@@ -52,9 +52,9 @@
             compatible = "zmk,behavior-hold-tap";
             #binding-cells = <2>;
             flavor = "balanced";
-            tapping-term-ms = <250>;        // how long a key needs to be pressed to register as a hold (default 200)
+            tapping-term-ms = <220>;        // how long a key needs to be pressed to register as a hold (default 200)
             quick-tap-ms = <175>;           // if a key is released within this time, it will always register as a tap (default 0, disabled)
-            require-prior-idle-ms = <150>;  // how long before a tap that the key must have been idle to register as a hold (default 0, disabled)
+            require-prior-idle-ms = <100>;  // how long before a tap that the key must have been idle to register as a hold (default 0, disabled)
             bindings = <&kp>, <&kp>;
             hold-trigger-key-positions = <KEYS_L THUMBS>; // Trigger hold when pressing opposite hand (prevents accidental mods on single hand)
             hold-trigger-on-release;        // Trigger hold on key release (instead of key press)

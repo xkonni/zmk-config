@@ -55,6 +55,10 @@ config I2C
 config SPI
     default y
 
+# Enable mouse/pointer movement (needed for mmv MOVE_* bindings)
+config ZMK_MOUSE
+    default y
+
 endif
 
 if SHIELD_XK42_LEFT
