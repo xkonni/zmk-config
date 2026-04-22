@@ -43,7 +43,7 @@
             quick-tap-ms = <175>;           // if a key is released within this time, it will always register as a tap (default 0, disabled)
             require-prior-idle-ms = <150>;  // how long before a tap that the key must have been idle to register as a hold (default 0, disabled)
             bindings = <&kp>, <&kp>;
-            hold-trigger-key-positions = <KEYS_L THUMBS>; // Trigger hold when pressing opposite hand (prevents accidental mods on single hand)
+            hold-trigger-key-positions = <KEYS_R THUMBS>; // Trigger hold when pressing opposite hand (prevents accidental mods on single hand)
             hold-trigger-on-release;        // Trigger hold on key release (instead of key press)
         };
 
