@@ -32,6 +32,13 @@
             bindings = <&kp ESC>;
         };
 
+        combo_jsemicolon {
+            timeout-ms = <50>;
+            require-prior-idle-ms = <50>;
+            key-positions = <19 24>;
+            bindings = <&kp COLON>;
+        };
+
         combo_jslash {
             timeout-ms = <50>;
             require-prior-idle-ms = <50>;
@@ -67,6 +74,18 @@
             hold-trigger-on-release;        // Trigger hold on key release (instead of key press)
         };
 
+        /* ModTap slow, with high tapping term */
+        mts: behavior_mts {
+            compatible = "zmk,behavior-hold-tap";
+            #binding-cells = <2>;
+            flavor = "tap-preferred";
+            tapping-term-ms = <300>;        // how long a key needs to be pressed to register as a hold (default 200)
+            quick-tap-ms = <200>;           // if a key is released within this time, it will always register as a tap (default 0, disabled)
+            bindings = <&kp>, <&kp>;
+            hold-trigger-on-release;        // Trigger hold on key release (instead of key press)
+        };
+
+
         /* Layer tap with quick-tap-ms. */
         ltq: behavior_layer_tap {
             compatible = "zmk,behavior-hold-tap";
@@ -86,16 +105,15 @@
             quick-tap-ms = <175>;           // if a key is released within this time, it will always register as a tap (default 0, disabled)
             bindings = <&kp>, <&kp>;
         };
-
-        /* ModTap with high tapping term */
-        cp: behavior_cp {
+        /* LayerTap slow, with high tapping term */
+        lts: behavior_lts {
             compatible = "zmk,behavior-hold-tap";
-            bindings = <&kp>, <&kp>;
             #binding-cells = <2>;
-            tapping-term-ms = <300>;
             flavor = "tap-preferred";
-            hold-trigger-on-release;
-            quick-tap-ms = <200>;
+            tapping-term-ms = <300>;        // how long a key needs to be pressed to register as a hold (default 200)
+            quick-tap-ms = <200>;           // if a key is released within this time, it will always register as a tap (default 0, disabled)
+            bindings = <&mo>, <&kp>;
+            hold-trigger-on-release;        // Trigger hold on key release (instead of key press)
         };
     };
 
@@ -107,8 +125,8 @@
             bindings = <
             &kp TAB         &kp Q               &kp W               &kp E               &kp R               &kp T            &none   &none   &kp Y           &kp U             &kp I                 &kp O            &hmr RALT P      &none
             &mtq LSHIFT TAB &hml LGUI A         &kp S               &hml LCTRL D        &hml LSHFT F        &ltq 1 G         &none   &none   &ltq 1 H        &hmr RSHFT J      &hmr RIGHT_CONTROL K  &kp L            &hmr RGUI SEMI   &mtq RSHIFT BSPC
-            &mtq LCTRL ESC  &cp LG(Z) Z         &cp LG(X) X         &cp LG(C) C         &cp LG(V) V         &ltq 2 B                         &ltq 2 N        &kp M             &kp COMMA             &kp DOT          &kp FSLH         &mtq RCTRL DELETE
-                                                                    &kp LALT            &mo 1               &ltq 3 SPACE                     &ltq 4 RET      &mo 2             &kp LALT
+            &mtq LCTRL ESC  &mts LG(Z) Z        &mts LG(X) X        &mts LG(C) C        &mts LG(V) V        &ltq 2 B                         &ltq 2 N        &kp M             &kp COMMA             &kp DOT          &kp FSLH         &mtq RCTRL DELETE
+                                                                    &kp LALT            &mo 1               &lts 3 SPACE                     &lts 4 RET      &mo 2             &kp LALT
             >;
             sensor-bindings = <&inc_dec_kp C_VOL_DN C_VOL_UP &inc_dec_kp PG_UP PG_DN &inc_dec_kp C_PREV C_NEXT &inc_dec_kp C_BRI_DN C_BRI_UP>;
         };
