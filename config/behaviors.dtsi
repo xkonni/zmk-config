@@ -1,0 +1,81 @@
+/*
+ * Copyright (c) 2020 The ZMK Contributors
+ *
+ * SPDX-License-Identifier: MIT
+ *
+ * Shared custom behaviors for all keyboards.
+ * Each keymap must include the appropriate key-labels header before this file
+ * to supply KEYS_L, KEYS_R and THUMBS for the HRM hold-trigger-key-positions.
+ */
+
+/ {
+    behaviors {
+        /* Left-hand HRMs. */
+        hml: behavior_hold_tap_left {
+            compatible = "zmk,behavior-hold-tap";
+            #binding-cells = <2>;
+            flavor = "balanced";
+            tapping-term-ms = <220>;        // how long a key needs to be pressed to register as a hold (default 200)
+            quick-tap-ms = <175>;           // if a key is released within this time, it will always register as a tap (default 0, disabled)
+            require-prior-idle-ms = <100>;  // how long before a tap that the key must have been idle to register as a hold (default 0, disabled)
+            bindings = <&kp>, <&kp>;
+            hold-trigger-key-positions = <KEYS_R THUMBS>; // Trigger hold when pressing opposite hand (prevents accidental mods on single hand)
+            hold-trigger-on-release;        // Trigger hold on key release (instead of key press)
+        };
+
+        /* Right-hand HRMs. */
+        hmr: behavior_hold_tap_right {
+            compatible = "zmk,behavior-hold-tap";
+            #binding-cells = <2>;
+            flavor = "balanced";
+            tapping-term-ms = <220>;        // how long a key needs to be pressed to register as a hold (default 200)
+            quick-tap-ms = <175>;           // if a key is released within this time, it will always register as a tap (default 0, disabled)
+            require-prior-idle-ms = <100>;  // how long before a tap that the key must have been idle to register as a hold (default 0, disabled)
+            bindings = <&kp>, <&kp>;
+            hold-trigger-key-positions = <KEYS_L THUMBS>; // Trigger hold when pressing opposite hand (prevents accidental mods on single hand)
+            hold-trigger-on-release;        // Trigger hold on key release (instead of key press)
+        };
+
+        /* ModTap slow, with high tapping term */
+        mts: behavior_mts {
+            compatible = "zmk,behavior-hold-tap";
+            #binding-cells = <2>;
+            flavor = "tap-preferred";
+            tapping-term-ms = <300>;        // how long a key needs to be pressed to register as a hold (default 200)
+            quick-tap-ms = <200>;           // if a key is released within this time, it will always register as a tap (default 0, disabled)
+            bindings = <&kp>, <&kp>;
+            hold-trigger-on-release;        // Trigger hold on key release (instead of key press)
+        };
+
+        /* Layer tap with quick-tap-ms. */
+        ltq: behavior_layer_tap {
+            compatible = "zmk,behavior-hold-tap";
+            #binding-cells = <2>;
+            flavor = "tap-preferred";
+            tapping-term-ms = <220>;        // how long a key needs to be pressed to register as a hold (default 200)
+            quick-tap-ms = <175>;           // if a key is released within this time, it will always register as a tap (default 0, disabled)
+            bindings = <&mo>, <&kp>;
+        };
+
+        /* Mod tap with quick-tap-ms. */
+        mtq: behavior_mod_tap {
+            compatible = "zmk,behavior-hold-tap";
+            #binding-cells = <2>;
+            flavor = "tap-preferred";
+            tapping-term-ms = <220>;        // how long a key needs to be pressed to register as a hold (default 200)
+            quick-tap-ms = <175>;           // if a key is released within this time, it will always register as a tap (default 0, disabled)
+            bindings = <&kp>, <&kp>;
+        };
+
+        /* LayerTap slow, with high tapping term */
+        lts: behavior_lts {
+            compatible = "zmk,behavior-hold-tap";
+            #binding-cells = <2>;
+            flavor = "tap-preferred";
+            tapping-term-ms = <300>;        // how long a key needs to be pressed to register as a hold (default 200)
+            quick-tap-ms = <200>;           // if a key is released within this time, it will always register as a tap (default 0, disabled)
+            bindings = <&mo>, <&kp>;
+            hold-trigger-on-release;        // Trigger hold on key release (instead of key press)
+        };
+    };
+};

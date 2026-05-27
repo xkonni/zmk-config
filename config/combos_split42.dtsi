@@ -1,0 +1,42 @@
+/*
+ * Copyright (c) 2020 The ZMK Contributors
+ *
+ * SPDX-License-Identifier: MIT
+ *
+ * Shared combos for split42 boards (xk42, piantor_pro_bt).
+ * Key positions reference the split42 layout from key-labels/split42.h.
+ */
+
+/ {
+    combos {
+        compatible = "zmk,combos";
+
+        combo_df {
+            timeout-ms = <50>;
+            require-prior-idle-ms = <50>;
+            key-positions = <15 16>;
+            bindings = <&kp ESC>;
+        };
+
+        combo_jk {
+            timeout-ms = <50>;
+            require-prior-idle-ms = <50>;
+            key-positions = <19 20>;
+            bindings = <&kp ESC>;
+        };
+
+        combo_jsemicolon {
+            timeout-ms = <50>;
+            require-prior-idle-ms = <50>;
+            key-positions = <19 22>;
+            bindings = <&kp COLON>;
+        };
+
+        combo_jslash {
+            timeout-ms = <50>;
+            require-prior-idle-ms = <50>;
+            key-positions = <19 34>;
+            bindings = <&kp QUESTION>;
+        };
+    };
+};

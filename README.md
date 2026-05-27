@@ -9,7 +9,16 @@
 
 </details>
 
-## Core Choc Pro BT
+## Piantor Pro BT
+
+<details>
+<summary>View Keymap</summary>
+
+<img src="https://github.com/xkonni/zmk-config/releases/download/latest-piantor/piantor_pro_bt.png" alt="Piantor Keymap" />
+
+</details>
+
+## Corne Choc Pro BT
 
 <details>
 <summary>View Keymap</summary>
@@ -27,11 +36,3 @@
 
 </details>
 
-## Piantor Pro BT
-
-<details>
-<summary>View Keymap</summary>
-
-<img src="https://github.com/xkonni/zmk-config/releases/download/latest-piantor/piantor_pro_bt.png" alt="Piantor Keymap" />
-
-</details>

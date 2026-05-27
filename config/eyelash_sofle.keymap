@@ -1,95 +1,49 @@
-// -*- mode: c; c-basic-offset: 4; tab-width: 4; indent-tabs-mode: nil; -*-
+/*
+ * Copyright (c) 2020 The ZMK Contributors
+ *
+ * SPDX-License-Identifier: MIT
+ */
+
 #include <dt-bindings/zmk/mouse.h>
 #include <input/processors.dtsi>
 #include <behaviors.dtsi>
-#include <dt-bindings/zmk/bt.h>
 #include <dt-bindings/zmk/keys.h>
+#include <dt-bindings/zmk/bt.h>
 #include <dt-bindings/zmk/pointing.h>
 #include <dt-bindings/zmk/rgb.h>
-
-#define ZMK_POINTING_DEFAULT_MOVE_VAL 900   // default: 600
-#define ZMK_POINTING_DEFAULT_SCRL_VAL 20    // default: 10
-
-#define KEYS_L  0  1  2  3  4  5  13 14 15 16 17 18  26 27 28 29 30 31  39 40 41 42 43 44
-#define KEYS_R  7  8  9 10 11 12  20 21 22 23 24 25  33 34 35 36 37 38  46 47 48 49 50 51
-#define THUMBS 54 55 56  58 59 60
+#include "key-labels/eyelash_sofle.h"
+#include "behaviors.dtsi"
 
 / {
-    behaviors {
-        mmv {
-            acceleration-exponent = <1>;
-            time-to-max-speed-ms = <900>;
-            delay-ms = <0>;
-        };
-
-        msc {
-            acceleration-exponent = <1>;
-            time-to-max-speed-ms = <400>;
-            delay-ms = <0>;
-        };
-
-        /* Left-hand HRMs. */
-        hml: behavior_hold_tap_left {
-            compatible = "zmk,behavior-hold-tap";
-            #binding-cells = <2>;
-            flavor = "balanced";
-            tapping-term-ms = <220>;
-            quick-tap-ms = <175>;
-            require-prior-idle-ms = <100>;
-            bindings = <&kp>, <&kp>;
-            hold-trigger-key-positions = <KEYS_R THUMBS>;
-            hold-trigger-on-release;
-        };
-
-        /* Right-hand HRMs. */
-        hmr: behavior_hold_tap_right {
-            compatible = "zmk,behavior-hold-tap";
-            #binding-cells = <2>;
-            flavor = "balanced";
-            tapping-term-ms = <220>;
-            quick-tap-ms = <175>;
-            require-prior-idle-ms = <100>;
-            bindings = <&kp>, <&kp>;
-            hold-trigger-key-positions = <KEYS_L THUMBS>;
-            hold-trigger-on-release;
-        };
-
-        /* Layer tap with quick-tap-ms. */
-        ltq: behavior_layer_tap {
-            compatible = "zmk,behavior-hold-tap";
-            #binding-cells = <2>;
-            flavor = "tap-preferred";
-            tapping-term-ms = <200>;
-            quick-tap-ms = <175>;
-            bindings = <&mo>, <&kp>;
-        };
-
-        /* Mod tap with quick-tap-ms. */
-        mtq: behavior_mod_tap {
-            compatible = "zmk,behavior-hold-tap";
-            #binding-cells = <2>;
-            flavor = "tap-preferred";
-            tapping-term-ms = <200>;
-            quick-tap-ms = <175>;
-            bindings = <&kp>, <&kp>;
-        };
-    };
-
     combos {
         compatible = "zmk,combos";
 
         combo_df {
             timeout-ms = <50>;
             require-prior-idle-ms = <50>;
-            key-positions = <29 30>;
+            key-positions = <16 17>;
             bindings = <&kp ESC>;
         };
 
         combo_jk {
             timeout-ms = <50>;
             require-prior-idle-ms = <50>;
-            key-positions = <34 35>;
+            key-positions = <21 22>;
             bindings = <&kp ESC>;
+        };
+
+        combo_jsemicolon {
+            timeout-ms = <50>;
+            require-prior-idle-ms = <50>;
+            key-positions = <21 24>;
+            bindings = <&kp COLON>;
+        };
+
+        combo_jslash {
+            timeout-ms = <50>;
+            require-prior-idle-ms = <50>;
+            key-positions = <21 50>;
+            bindings = <&kp QUESTION>;
         };
     };
 
