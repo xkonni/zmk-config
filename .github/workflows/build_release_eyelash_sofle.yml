@@ -7,8 +7,10 @@ on:
       - main
     paths:
       - "boards/arm/eyelash_sofle/**"
-      - "config/eyelash_sofle.*"
       - "build_eyelash_sofle.yaml"
+      - "config/behaviors.dtsi"
+      - "config/key-labels/eyelash_sofle.h"
+      - "config/eyelash_sofle.*"
       - "config/west.yml"
       - "zephyr/**"
     tags:

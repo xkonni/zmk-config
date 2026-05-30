@@ -7,8 +7,11 @@ on:
       - main
     paths:
       - "boards/arm/piantor_pro_bt/**"
-      - "config/piantor_pro_bt.*"
       - "build_piantor.yaml"
+      - "config/behaviors.dtsi"
+      - "config/combos_split42.dtsi"
+      - "config/key-labels/split42.h"
+      - "config/piantor_pro_bt.*"
       - "config/west.yml"
       - "zephyr/**"
     tags:

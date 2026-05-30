@@ -7,8 +7,11 @@ on:
       - main
     paths:
       - "boards/shields/xk42/**"
-      - "config/xk42.*"
       - "build_xk42.yaml"
+      - "config/behaviors.dtsi"
+      - "config/combos_split42.dtsi"
+      - "config/key-labels/split42.h"
+      - "config/xk42.*"
       - "config/west.yml"
       - "zephyr/**"
     tags:
