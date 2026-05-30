@@ -25,17 +25,17 @@
             bindings = <&kp ESC>;
         };
 
-        combo_jsemicolon {
+        combo_ksemicolon {
             timeout-ms = <50>;
             require-prior-idle-ms = <50>;
-            key-positions = <19 22>;
+            key-positions = <20 22>;
             bindings = <&kp COLON>;
         };
 
-        combo_jslash {
+        combo_kslash {
             timeout-ms = <50>;
             require-prior-idle-ms = <50>;
-            key-positions = <19 34>;
+            key-positions = <20 34>;
             bindings = <&kp QUESTION>;
         };
     };
