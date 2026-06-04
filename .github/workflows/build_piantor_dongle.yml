@@ -1,0 +1,29 @@
+name: Build Piantor Pro BT Dongle firmware
+
+on:
+  workflow_dispatch:
+  push:
+    branches-ignore:
+      - main
+    paths:
+      - "boards/arm/piantor_pro_bt/**"
+      - "boards/shields/piantor_pro_bt_dongle/**"
+      - "build_piantor_dongle.yaml"
+      - "config/behaviors.dtsi"
+      - "config/combos_split42.dtsi"
+      - "config/key-labels/split42.h"
+      - "config/piantor_pro_bt_dongle.*"
+      - "config/west.yml"
+      - "zephyr/**"
+    tags:
+      - "build"
+permissions:
+  contents: write
+
+jobs:
+  build:
+    name: Build Piantor Dongle
+    uses: zmkfirmware/zmk/.github/workflows/build-user-config.yml@v0.3
+    with:
+      build_matrix_path: build_piantor_dongle.yaml
+      archive_name: piantor-dongle-firmware
