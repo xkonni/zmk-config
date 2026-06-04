@@ -1,0 +1,10 @@
+/*
+ * Copyright (c) 2020 The ZMK Contributors
+ * SPDX-License-Identifier: MIT
+ */
+
+#include "../xk42/xk42.dtsi"
+
+&default_transform {
+    col-offset = <6>;
+};
