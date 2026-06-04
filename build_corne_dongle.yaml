@@ -1,0 +1,18 @@
+---
+include:
+  - board: nice_nano_v2
+    shield: corne_choc_pro_dongle_central dongle_display
+    snippet: studio-rpc-usb-uart
+    cmake-args: -DCONFIG_ZMK_STUDIO=y -DCONFIG_ZMK_STUDIO_LOCKING=n
+    artifact-name: corne-dongle-central
+  - board: corne_choc_pro_left
+    shield: corne_choc_pro_dongle_peripheral_left nice_view_glyphs
+    cmake-args: -DCONFIG_NICE_VIEW_WIDGET_PATTERN=4
+    artifact-name: corne-dongle-left-nice_glyphs
+  - board: corne_choc_pro_right
+    shield: corne_choc_pro_dongle_peripheral_right nice_view_glyphs
+    cmake-args: -DCONFIG_NICE_VIEW_WIDGET_PATTERN=4
+    artifact-name: corne-dongle-right-nice_glyphs
+  - board: nice_nano_v2
+    shield: settings_reset
+    artifact-name: corne-dongle-settings_reset

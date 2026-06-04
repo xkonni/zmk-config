@@ -1,0 +1,28 @@
+name: Build Corne Choc Pro Dongle firmware
+
+on:
+  workflow_dispatch:
+  push:
+    branches-ignore:
+      - main
+    paths:
+      - "boards/arm/corne_choc_pro/**"
+      - "boards/shields/corne_choc_pro_dongle/**"
+      - "build_corne_dongle.yaml"
+      - "config/behaviors.dtsi"
+      - "config/key-labels/corne_choc_pro.h"
+      - "config/corne_choc_pro.*"
+      - "config/west.yml"
+      - "zephyr/**"
+    tags:
+      - "build"
+permissions:
+  contents: write
+
+jobs:
+  build:
+    name: Build Corne Dongle
+    uses: zmkfirmware/zmk/.github/workflows/build-user-config.yml@v0.3
+    with:
+      build_matrix_path: build_corne_dongle.yaml
+      archive_name: corne-dongle-firmware

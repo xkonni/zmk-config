@@ -1,0 +1,10 @@
+file_format: "1"
+id: corne_choc_pro_dongle
+name: Corne Choc Pro Dongle
+type: shield
+requires:
+  - pro_micro
+features:
+  - keys
+  - display
+  - ble
