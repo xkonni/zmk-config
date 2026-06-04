@@ -1,0 +1,8 @@
+config SHIELD_PIANTOR_PRO_BT_DONGLE_CENTRAL
+    def_bool $(shields_list_contains,piantor_pro_bt_dongle_central)
+
+config SHIELD_PIANTOR_PRO_BT_DONGLE_PERIPHERAL_LEFT
+    def_bool $(shields_list_contains,piantor_pro_bt_dongle_peripheral_left)
+
+config SHIELD_PIANTOR_PRO_BT_DONGLE_PERIPHERAL_RIGHT
+    def_bool $(shields_list_contains,piantor_pro_bt_dongle_peripheral_right)
