@@ -12,7 +12,6 @@ on:
       - "config/combos_split42.dtsi"
       - "config/key-labels/split42.h"
       - "config/piantor_pro_bt.*"
-      - "config/west.yml"
       - "zephyr/**"
     tags:
       - "build"

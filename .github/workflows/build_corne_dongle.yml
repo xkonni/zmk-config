@@ -12,7 +12,6 @@ on:
       - "config/behaviors.dtsi"
       - "config/key-labels/corne_choc_pro.h"
       - "config/corne_choc_pro.*"
-      - "config/west.yml"
       - "zephyr/**"
     tags:
       - "build"
