@@ -14,8 +14,4 @@ include:
     shield: settings_reset
     snippet: studio-rpc-usb-uart
     cmake-args: -DCONFIG_ZMK_STUDIO=y
-    artifact-name: piantor-left-settings_reset
-  - board: piantor_pro_bt_right
-    shield: settings_reset
-    snippet: studio-rpc-usb-uart
-    artifact-name: piantor-right-settings_reset
+    artifact-name: piantor-settings_reset

@@ -13,8 +13,4 @@ include:
     shield: settings_reset
     snippet: studio-rpc-usb-uart
     cmake-args: -DCONFIG_ZMK_STUDIO=y
-    artifact-name: eyelash-left-settings_reset
-  - board: eyelash_sofle_right
-    shield: settings_reset
-    snippet: studio-rpc-usb-uart
-    artifact-name: eyelash-right-settings_reset
+    artifact-name: eyelash-sofle-settings_reset
