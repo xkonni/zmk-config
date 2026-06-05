@@ -14,8 +14,4 @@ include:
     shield: settings_reset
     snippet: studio-rpc-usb-uart
     cmake-args: -DCONFIG_ZMK_STUDIO=y
-    artifact-name: corne-left-settings_reset
-  - board: corne_choc_pro_right
-    shield: settings_reset
-    snippet: studio-rpc-usb-uart
-    artifact-name: corne-right-settings_reset
+    artifact-name: corne-settings_reset
