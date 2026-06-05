@@ -2,8 +2,6 @@ manifest:
   remotes:
     - name: zmkfirmware
       url-base: https://github.com/zmkfirmware
-    - name: pfilipp
-      url-base: https://github.com/pfilipp
     - name: infely
       url-base: https://github.com/infely
     - name: xkonni
@@ -14,8 +12,8 @@ manifest:
       url-base: https://github.com/englmaxi
   projects:
     - name: zmk
-      remote: pfilipp
-      revision: layer-state-report
+      remote: xkonni
+      revision: v0.3-layer-state
       import: app/west.yml
     - name: nice-view-battery
       remote: infely
