@@ -12,7 +12,6 @@ on:
       - "config/behaviors.dtsi"
       - "config/key-labels/eyelash_sofle.h"
       - "config/eyelash_sofle.*"
-      - "config/west.yml"
       - "zephyr/**"
     tags:
       - "build"
