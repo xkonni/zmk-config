@@ -1,0 +1,93 @@
+name: Build and release xk42 Dongle firmware
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - main
+    paths:
+      - "boards/shields/xk42/**"
+      - "boards/shields/xk42_dongle/**"
+      - "build_xk42_dongle.yaml"
+      - "config/behaviors.dtsi"
+      - "config/combos_split42.dtsi"
+      - "config/key-labels/split42.h"
+      - "config/xk42.keymap"
+      - "config/xk42_dongle.*"
+      - "zephyr/**"
+    tags:
+      - "build"
+permissions:
+  contents: write
+
+jobs:
+  draw:
+    name: Draw xk42 Dongle Keymap
+    uses: caksoylar/keymap-drawer/.github/workflows/draw-zmk.yml@main
+    if: github.ref == 'refs/heads/main' || github.ref == 'refs/tags/build'
+    permissions:
+      contents: read
+    with:
+      destination: artifact
+      artifact_name: xk42-dongle-keymap
+      fail_on_error: true
+      keymap_patterns: "config/xk42_dongle.keymap"
+  build:
+    name: Build xk42 Dongle
+    uses: zmkfirmware/zmk/.github/workflows/build-user-config.yml@v0.3
+    with:
+      build_matrix_path: build_xk42_dongle.yaml
+      archive_name: xk42-dongle-firmware
+  release:
+    name: Release xk42 Dongle
+    needs: [build, draw]
+    if: success() && (github.ref == 'refs/heads/main' || github.ref == 'refs/tags/build')
+    runs-on: ubuntu-latest
+    steps:
+      - name: Download artifacts
+        uses: actions/download-artifact@v4
+        with:
+          name: xk42-dongle-firmware
+          path: ./artifacts
+      - name: Download keymap artifact
+        uses: actions/download-artifact@v4
+        with:
+          name: xk42-dongle-keymap
+          path: ./keymap_artifacts
+      - name: Convert keymap SVG to PNG
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y --no-install-recommends librsvg2-bin
+          for f in ./keymap_artifacts/*.svg; do
+            [ -f "$f" ] || continue
+            png="${f%.svg}.png"
+            rsvg-convert "$f" -o "$png"
+            echo "Converted $f -> $png"
+          done
+      - name: Generate build info
+        id: info
+        run: |
+          echo "timestamp=$(date +'%Y-%m-%d %H:%M:%S UTC')" >> $GITHUB_OUTPUT
+          echo "short_sha=${GITHUB_SHA:0:7}" >> $GITHUB_OUTPUT
+      - name: Delete existing tag
+        uses: dev-drprasad/delete-tag-and-release@v1.0
+        with:
+          tag_name: latest-xk42-dongle
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+        continue-on-error: true
+      - name: Create release
+        uses: softprops/action-gh-release@v1
+        with:
+          tag_name: latest-xk42-dongle
+          name: xk42 Dongle Latest Firmware
+          body: |
+            🔁 **xk42 Dongle Build**
+            Commit: ${{ steps.info.outputs.short_sha }}
+            Built: ${{ steps.info.outputs.timestamp }}
+            Install: flash central/left/right .uf2 files.
+            Keymap PNG: Download from release assets
+          files: |
+            ./artifacts/**/*.uf2
+            ./keymap_artifacts/**/*.png
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
