@@ -18,7 +18,6 @@ build-time and are therefore always identical.
 
 - [nice-view-glyphs](https://github.com/xkonni/nice-view-glyphs) — custom glyphs for nice!view
 - [nice-view-battery](https://github.com/infely/nice-view-battery) — battery widget for nice!view
-- [prospector-zmk-module](https://github.com/tokyo2006/prospector-zmk-module) — Piantor Pro BT board support
 - [zmk-dongle-display](https://github.com/englmaxi/zmk-dongle-display) — dongle display support
 
 ## xk42

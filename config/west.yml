@@ -6,8 +6,6 @@ manifest:
       url-base: https://github.com/infely
     - name: xkonni
       url-base: https://github.com/xkonni
-    - name: tokyo2006
-      url-base: https://github.com/tokyo2006
     - name: englmaxi
       url-base: https://github.com/englmaxi
   projects:
@@ -21,9 +19,6 @@ manifest:
     - name: nice-view-glyphs
       remote: xkonni
       revision: main
-    - name: prospector-zmk-module
-      remote: tokyo2006
-      revision: nice_nano_spi2
     - name: zmk-dongle-display
       remote: englmaxi
       revision: v0.3
