@@ -20,7 +20,7 @@ manifest:
       remote: xkonni
       revision: main
     - name: zmk-dongle-display
-      remote: englmaxi
-      revision: v0.3
+      remote: xkonni
+      revision: zmk-v0.3
   self:
     path: config
