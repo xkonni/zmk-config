@@ -31,7 +31,7 @@ jobs:
       destination: artifact
       artifact_name: piantor-dongle-keymap
       fail_on_error: true
-      keymap_patterns: "config/piantor_pro_bt_dongle.keymap"
+      keymap_patterns: "config/piantor_pro_bt.keymap"
   build:
     name: Build Piantor Dongle
     uses: zmkfirmware/zmk/.github/workflows/build-user-config.yml@v0.3

@@ -31,7 +31,7 @@ jobs:
       destination: artifact
       artifact_name: xk42-dongle-keymap
       fail_on_error: true
-      keymap_patterns: "config/xk42_dongle.keymap"
+      keymap_patterns: "config/xk42.keymap"
   build:
     name: Build xk42 Dongle
     uses: zmkfirmware/zmk/.github/workflows/build-user-config.yml@v0.3
