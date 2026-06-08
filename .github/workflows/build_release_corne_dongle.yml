@@ -30,7 +30,7 @@ jobs:
       destination: artifact
       artifact_name: corne-dongle-keymap
       fail_on_error: true
-      keymap_patterns: "config/corne_choc_pro_dongle.keymap"
+      keymap_patterns: "config/corne_choc_pro.keymap"
   build:
     name: Build Corne Dongle
     uses: zmkfirmware/zmk/.github/workflows/build-user-config.yml@v0.3
