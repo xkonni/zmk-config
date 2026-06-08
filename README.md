@@ -1,5 +1,26 @@
 # ZMK Config
 
+Personal ZMK firmware configuration for four split keyboards, based on ZMK v0.3.
+Each keyboard is available in a standard BLE variant and a dongle variant (USB dongle
+as central, wireless peripherals). Dongle keymaps reference the regular keymap at
+build-time and are therefore always identical.
+
+## Keyboards
+
+| Keyboard | Keys | Regular | Dongle |
+|---|---|---|---|
+| **xk42** | 42-key split | x | x |
+| **Piantor Pro BT** | 42-key split | x | x |
+| **Corne Choc Pro BT** | 46-key split | x | x |
+| **Eyelash Sofle** | 58-key split | x | x |
+
+## ZMK modules
+
+- [nice-view-glyphs](https://github.com/xkonni/nice-view-glyphs) — custom glyphs for nice!view
+- [nice-view-battery](https://github.com/infely/nice-view-battery) — battery widget for nice!view
+- [prospector-zmk-module](https://github.com/tokyo2006/prospector-zmk-module) — Piantor Pro BT board support
+- [zmk-dongle-display](https://github.com/englmaxi/zmk-dongle-display) — dongle display support
+
 ## xk42
 
 <details>
@@ -35,4 +56,3 @@
 <img src="https://github.com/xkonni/zmk-config/releases/download/latest-eyelash_sofle/eyelash_sofle.png" alt="Eyelash Sofle Keymap" />
 
 </details>
-
