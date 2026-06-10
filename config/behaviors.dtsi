@@ -10,7 +10,6 @@
 
 / {
     behaviors {
-        /* Left-hand HRMs. */
         hml: behavior_hold_tap_left {
             compatible = "zmk,behavior-hold-tap";
             #binding-cells = <2>;
