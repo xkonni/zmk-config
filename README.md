@@ -9,10 +9,10 @@ build-time and are therefore always identical.
 
 | Keyboard | Keys | Regular | Dongle |
 |---|---|---|---|
-| **xk42** | 42-key split | x | x |
-| **Piantor Pro BT** | 42-key split | x | x |
-| **Corne Choc Pro BT** | 46-key split | x | x |
-| **Eyelash Sofle** | 58-key split | x | x |
+| **xk42** | 42-key split | [![](https://github.com/xkonni/zmk-config/actions/workflows/build_release_xk42.yml/badge.svg)](https://github.com/xkonni/zmk-config/actions/workflows/build_release_xk42.yml) | [![](https://github.com/xkonni/zmk-config/actions/workflows/build_release_xk42_dongle.yml/badge.svg)](https://github.com/xkonni/zmk-config/actions/workflows/build_release_xk42_dongle.yml) |
+| **Piantor Pro BT** | 42-key split | [![](https://github.com/xkonni/zmk-config/actions/workflows/build_release_piantor.yml/badge.svg)](https://github.com/xkonni/zmk-config/actions/workflows/build_release_piantor.yml) | [![](https://github.com/xkonni/zmk-config/actions/workflows/build_release_piantor_dongle.yml/badge.svg)](https://github.com/xkonni/zmk-config/actions/workflows/build_release_piantor_dongle.yml) |
+| **Corne Choc Pro BT** | 46-key split | [![](https://github.com/xkonni/zmk-config/actions/workflows/build_release_corne.yml/badge.svg)](https://github.com/xkonni/zmk-config/actions/workflows/build_release_corne.yml) | [![](https://github.com/xkonni/zmk-config/actions/workflows/build_release_corne_dongle.yml/badge.svg)](https://github.com/xkonni/zmk-config/actions/workflows/build_release_corne_dongle.yml) |
+| **Eyelash Sofle** | 58-key split | [![](https://github.com/xkonni/zmk-config/actions/workflows/build_release_eyelash_sofle.yml/badge.svg)](https://github.com/xkonni/zmk-config/actions/workflows/build_release_eyelash_sofle.yml) | |
 
 ## ZMK modules
 
