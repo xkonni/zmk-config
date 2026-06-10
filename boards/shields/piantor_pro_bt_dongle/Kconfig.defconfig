@@ -12,6 +12,9 @@ config ZMK_SPLIT
 config ZMK_SPLIT_BLE_CENTRAL_PERIPHERALS
     default 2
 
+config ZMK_RGB_UNDERGLOW_EXT_POWER
+    default n
+
 if ZMK_DISPLAY
 
 config I2C
