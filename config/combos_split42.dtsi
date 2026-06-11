@@ -24,19 +24,5 @@
             key-positions = <19 20>;
             bindings = <&kp ESC>;
         };
-
-        combo_ksemicolon {
-            timeout-ms = <50>;
-            require-prior-idle-ms = <50>;
-            key-positions = <20 22>;
-            bindings = <&kp COLON>;
-        };
-
-        combo_kslash {
-            timeout-ms = <50>;
-            require-prior-idle-ms = <50>;
-            key-positions = <20 34>;
-            bindings = <&kp QUESTION>;
-        };
     };
 };
