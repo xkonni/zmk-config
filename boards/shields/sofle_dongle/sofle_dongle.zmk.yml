@@ -1,6 +1,6 @@
 file_format: "1"
-id: eyeslash_sofle
-name: Eyeslash Sofle
+id: sofle_dongle
+name: Eyelash Sofle Dongle
 url: https://github.com/a741725193/zmk-sofle
 type: shield
 requires: [pro_micro]
@@ -11,5 +11,6 @@ outputs:
   - usb
   - ble
 siblings:
-  - eyeslash_sofle_left
-  - eyeslash_sofle_right
+  - sofle_dongle_central
+  - sofle_dongle_peripheral_left
+  - sofle_dongle_peripheral_right
