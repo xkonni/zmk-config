@@ -1,7 +1,7 @@
 #include <physical_layouts.dtsi>
 
 / {
-    eyeslash_sofle_layout: eyeslash_sofle_layout {
+    sofle_dongle_layout: sofle_dongle_layout {
         compatible = "zmk,physical-layout";
         display-name = "Layout";
         transform = <&default_transform>;
