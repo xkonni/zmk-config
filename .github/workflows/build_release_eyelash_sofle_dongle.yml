@@ -7,11 +7,12 @@ on:
       - main
     paths:
       - "boards/arm/eyelash_sofle/**"
-      - "boards/shields/eyeslash_sofle_dongle/**"
+      - "boards/shields/sofle_dongle/**"
       - "build_eyelash_sofle_dongle.yaml"
       - "config/behaviors.dtsi"
       - "config/key-labels/eyelash_sofle.h"
       - "config/eyelash_sofle.keymap"
+      - "config/eyelash_sofle_dongle.keymap"
       - "config/eyelash_sofle.*"
       - "zephyr/**"
     tags:
