@@ -1,17 +1,1 @@
 #include "eyelash_sofle.keymap"
-
-/*
- * Override the momentary_layer behavior with a short node name to work
- * around Zephyr's 48-char device name limit when building with ZMK Studio
- * on nice_nano_v2 (ZMK_BEHAVIORS_KEEP_ALL set by studio-rpc-usb-uart snippet).
- */
-/ {
-    behaviors {
-        /delete-node/ momentary_layer;
-        mo: mo {
-            compatible = "zmk,behavior-momentary-layer";
-            #binding-cells = <1>;
-            display-name = "Momentary Layer";
-        };
-    };
-};
