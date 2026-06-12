@@ -11,6 +11,8 @@ on:
       - "build_eyelash_sofle_dongle.yaml"
       - "config/behaviors.dtsi"
       - "config/key-labels/eyelash_sofle.h"
+      - "config/eyelash_sofle.keymap"
+      - "config/eyelash_sofle_dongle.keymap"
       - "config/eyelash_sofle.*"
       - "zephyr/**"
     tags:
