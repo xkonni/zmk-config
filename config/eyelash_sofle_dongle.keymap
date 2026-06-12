@@ -1,1 +1,18 @@
+/*
+ * For the sofle dongle central (nice_nano_v2 + Studio), the default
+ * "momentary_layer" behavior node name is too long for Zephyr's device
+ * name limit. Force-omit it and define a shorter replacement.
+ */
+#define ZMK_BEHAVIORS_OMIT_MO
+
 #include "eyelash_sofle.keymap"
+
+/ {
+    behaviors {
+        mo: mo {
+            compatible = "zmk,behavior-momentary-layer";
+            #binding-cells = <1>;
+            display-name = "Momentary Layer";
+        };
+    };
+};
