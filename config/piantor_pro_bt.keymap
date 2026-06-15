@@ -22,10 +22,10 @@
         default_layer {
             display-name = "MAIN";
             bindings = <
-            &none   &kp Q               &kp W               &kp E               &kp R               &kp T            &kp Y           &kp U             &kp I                 &kp O            &kp P            &none
+            &none   &kp Q               &kp W               &kp E               &kp R               &kp T            &kp Y           &kp U             &kp I                 &kp O            &hmr RALT P      &none
             &none   &hml LSHIFT A       &hml LGUI S         &hml LCTRL D        &kp F               &ltq 1 G         &ltq 1 H        &kp J             &hmr LCTRL K          &hmr LGUI L      &hmr RSHIFT SEMI &none
             &none   &mts LG(Z) Z        &mts LG(X) X        &mts LG(C) C        &mts LG(V) V        &ltq 2 B         &ltq 2 N        &kp M             &kp COMMA             &kp DOT          &kp FSLH         &none
-                                                            &kp LALT            &mo 1               &lts 3 SPACE     &lts 4 RET      &mo 2             &kp RALT
+                                                            &kp LALT            &mo 1               &lts 3 SPACE     &lts 4 RET      &mo 2             &kp LALT
 >;
         };
 

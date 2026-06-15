@@ -40,10 +40,10 @@
         default_layer {
             display-name = "MAIN";
             bindings = <
-            &kp TAB         &kp Q               &kp W               &kp E               &kp R               &kp T            &none   &none   &kp Y           &kp U             &kp I                 &kp O            &kp P            &none
+            &kp TAB         &kp Q               &kp W               &kp E               &kp R               &kp T            &none   &none   &kp Y           &kp U             &kp I                 &kp O            &hmr RALT P      &none
             &mtq LSHIFT TAB &hml LSHIFT A       &hml LGUI S         &hml LCTRL D        &kp F               &ltq 1 G         &none   &none   &ltq 1 H        &kp J             &hmr LCTRL K          &hmr LGUI L      &hmr RSHIFT SEMI &mtq RSHIFT BSPC
             &mtq LCTRL ESC  &mts LG(Z) Z        &mts LG(X) X        &mts LG(C) C        &mts LG(V) V        &ltq 2 B                         &ltq 2 N        &kp M             &kp COMMA             &kp DOT          &kp FSLH         &mtq RCTRL DELETE
-                                                                    &kp LALT            &mo 1               &lts 3 SPACE                     &lts 4 RET      &mo 2             &kp RALT
+                                                                    &kp LALT            &mo 1               &lts 3 SPACE                     &lts 4 RET      &mo 2             &kp LALT
             >;
             sensor-bindings = <&inc_dec_kp C_VOL_DN C_VOL_UP &inc_dec_kp PG_UP PG_DN &inc_dec_kp C_PREV C_NEXT &inc_dec_kp C_BRI_DN C_BRI_UP>;
         };
