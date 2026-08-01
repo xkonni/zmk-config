@@ -66,8 +66,8 @@
             bindings = <
 &trans          &kp F1          &kp F2          &kp F3          &kp F4          &kp F5          &trans          &kp F6          &kp F7          &kp F8          &kp F9          &kp F10         &trans
 &trans          &trans          &trans          &trans          &trans          &trans          &trans          &trans          &trans          &trans          &trans          &kp F11         &trans
-&trans          &none           &none           &kp LCTRL       &kp GRAVE       &kp EQUAL       &trans          &kp MINUS       &kp LBKT        &kp RBKT        &kp DQT         &kp PIPE        &trans
-&trans          &none           &none           &none           &kp TILDE       &kp PLUS        &trans          &kp UNDER       &kp LBRC        &kp RBRC        &kp SQT         &kp BSLH        &trans
+&trans          &none           &none           &kp LCTRL       &kp GRAVE       &kp EQUAL       &trans          &kp MINUS       &kp LBKT        &kp RBKT        &kp SQT         &kp DQT         &trans
+&trans          &none           &none           &none           &kp TILDE       &kp PLUS        &trans          &kp UNDER       &kp LBRC        &kp RBRC        &kp PIPE        &kp BSLH        &trans
 &none           &none           &none           &trans          &trans          &trans          &trans          &trans          &mo 5           &trans          &none           &none
             >;
         };
