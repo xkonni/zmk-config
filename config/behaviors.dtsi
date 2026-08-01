@@ -14,7 +14,7 @@
             compatible = "zmk,behavior-hold-tap";
             #binding-cells = <2>;
             flavor = "balanced";
-            tapping-term-ms = <220>;        // how long a key needs to be pressed to register as a hold (default 200)
+            tapping-term-ms = <200>;        // how long a key needs to be pressed to register as a hold (default 200)
             quick-tap-ms = <175>;           // if a key is released within this time, it will always register as a tap (default 0, disabled)
             require-prior-idle-ms = <100>;  // how long before a tap that the key must have been idle to register as a hold (default 0, disabled)
             bindings = <&kp>, <&kp>;
@@ -27,7 +27,7 @@
             compatible = "zmk,behavior-hold-tap";
             #binding-cells = <2>;
             flavor = "balanced";
-            tapping-term-ms = <220>;        // how long a key needs to be pressed to register as a hold (default 200)
+            tapping-term-ms = <200>;        // how long a key needs to be pressed to register as a hold (default 200)
             quick-tap-ms = <175>;           // if a key is released within this time, it will always register as a tap (default 0, disabled)
             require-prior-idle-ms = <100>;  // how long before a tap that the key must have been idle to register as a hold (default 0, disabled)
             bindings = <&kp>, <&kp>;
@@ -51,7 +51,7 @@
             compatible = "zmk,behavior-hold-tap";
             #binding-cells = <2>;
             flavor = "tap-preferred";
-            tapping-term-ms = <220>;        // how long a key needs to be pressed to register as a hold (default 200)
+            tapping-term-ms = <200>;        // how long a key needs to be pressed to register as a hold (default 200)
             quick-tap-ms = <175>;           // if a key is released within this time, it will always register as a tap (default 0, disabled)
             bindings = <&mo>, <&kp>;
         };
@@ -61,7 +61,7 @@
             compatible = "zmk,behavior-hold-tap";
             #binding-cells = <2>;
             flavor = "tap-preferred";
-            tapping-term-ms = <220>;        // how long a key needs to be pressed to register as a hold (default 200)
+            tapping-term-ms = <200>;        // how long a key needs to be pressed to register as a hold (default 200)
             quick-tap-ms = <175>;           // if a key is released within this time, it will always register as a tap (default 0, disabled)
             bindings = <&kp>, <&kp>;
         };
