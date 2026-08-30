@@ -3,8 +3,8 @@ name: Build Piantor Pro BT firmware
 on:
   workflow_dispatch:
   push:
-    branches-ignore:
-      - main
+    branches:
+      - dev
     paths:
       - "boards/arm/piantor_pro_bt/**"
       - "build_piantor.yaml"

@@ -3,8 +3,8 @@ name: Build Corne Choc Pro firmware
 on:
   workflow_dispatch:
   push:
-    branches-ignore:
-      - main
+    branches:
+      - dev
     paths:
       - "boards/arm/corne_choc_pro/**"
       - "build_corne.yaml"

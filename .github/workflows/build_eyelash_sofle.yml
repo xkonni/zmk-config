@@ -3,8 +3,8 @@ name: Build Eyelash Sofle firmware
 on:
   workflow_dispatch:
   push:
-    branches-ignore:
-      - main
+    branches:
+      - dev
     paths:
       - "boards/arm/eyelash_sofle/**"
       - "build_eyelash_sofle.yaml"

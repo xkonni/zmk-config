@@ -3,8 +3,8 @@ name: Build xk42 Dongle firmware
 on:
   workflow_dispatch:
   push:
-    branches-ignore:
-      - main
+    branches:
+      - dev
     paths:
       - "boards/shields/xk42/**"
       - "boards/shields/xk42_dongle/**"

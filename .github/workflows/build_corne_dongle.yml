@@ -3,8 +3,8 @@ name: Build Corne Choc Pro Dongle firmware
 on:
   workflow_dispatch:
   push:
-    branches-ignore:
-      - main
+    branches:
+      - dev
     paths:
       - "boards/arm/corne_choc_pro/**"
       - "boards/shields/corne_choc_pro_dongle/**"
