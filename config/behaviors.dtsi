@@ -76,5 +76,13 @@
             bindings = <&mo>, <&kp>;
             hold-trigger-on-release;        // Trigger hold on key release (instead of key press)
         };
+
+        /* LALT on tap/hold, momentary alt-number layer on double-tap/hold */
+        td_lalt: tap_dance_lalt {
+            compatible = "zmk,behavior-tap-dance";
+            #binding-cells = <0>;
+            tapping-term-ms = <200>;
+            bindings = <&kp LALT>, <&mo 7>;
+        };
     };
 };
