@@ -1,0 +1,36 @@
+name: Build Totemist firmware
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - dev
+    paths:
+      - "build_totemist.yaml"
+      - "config/behaviors.dtsi"
+      - "config/combos_totem.dtsi"
+      - "config/key-labels/totem.h"
+      - "config/totem.*"
+    tags:
+      - "build"
+permissions:
+  contents: write
+
+jobs:
+  draw:
+    name: Draw Totemist Keymap
+    uses: caksoylar/keymap-drawer/.github/workflows/draw-zmk.yml@main
+    permissions:
+      contents: read
+    with:
+      destination: artifact
+      artifact_name: totemist-keymap
+      fail_on_error: true
+      keymap_patterns: "config/totem.keymap"
+  build:
+    name: Build Totemist
+    needs: draw
+    uses: zmkfirmware/zmk/.github/workflows/build-user-config.yml@v0.3
+    with:
+      build_matrix_path: build_totemist.yaml
+      archive_name: totemist-firmware

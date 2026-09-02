@@ -1,0 +1,28 @@
+/*
+ * Copyright (c) 2020 The ZMK Contributors
+ *
+ * SPDX-License-Identifier: MIT
+ *
+ * Shared combos for totem board.
+ * Key positions reference the totem layout from key-labels/totem.h.
+ */
+
+/ {
+    combos {
+        compatible = "zmk,combos";
+
+        combo_df {
+            timeout-ms = <50>;
+            require-prior-idle-ms = <50>;
+            key-positions = <12 13>;
+            bindings = <&kp ESC>;
+        };
+
+        combo_jk {
+            timeout-ms = <50>;
+            require-prior-idle-ms = <50>;
+            key-positions = <16 17>;
+            bindings = <&kp ESC>;
+        };
+    };
+};
