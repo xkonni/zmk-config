@@ -81,7 +81,7 @@
         td_lalt: tap_dance_lalt {
             compatible = "zmk,behavior-tap-dance";
             #binding-cells = <0>;
-            tapping-term-ms = <200>;
+            tapping-term-ms = <250>;
             bindings = <&kp LALT>, <&mo 7>;
         };
     };
