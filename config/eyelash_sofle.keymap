@@ -45,6 +45,12 @@
             key-positions = <35 50>;
             bindings = <&kp QUESTION>;
         };
+
+        combo_caps_word {
+            timeout-ms = <50>;
+            key-positions = <LM4 RM4>;
+            bindings = <&caps_word>;
+        };
     };
 
     keymap {
