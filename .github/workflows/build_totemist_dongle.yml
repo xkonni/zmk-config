@@ -2,19 +2,6 @@ name: Build Totemist Dongle firmware
 
 on:
   workflow_dispatch:
-  push:
-    branches:
-      - dev
-    paths:
-      - "boards/shields/totemist_dongle/**"
-      - "build_totemist_dongle.yaml"
-      - "config/behaviors.dtsi"
-      - "config/combos_totem.dtsi"
-      - "config/key-labels/totem.h"
-      - "config/totem.keymap"
-      - "config/totemist_dongle.*"
-    tags:
-      - "build"
 permissions:
   contents: write
 
