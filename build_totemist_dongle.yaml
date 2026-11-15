@@ -1,6 +1,6 @@
 ---
 include:
-  - board: nice_nano_v2
+  - board: nice_nano//zmk
     shield: totemist_dongle_central dongle_display
     snippet: studio-rpc-usb-uart
     cmake-args: -DCONFIG_ZMK_STUDIO=y -DCONFIG_ZMK_STUDIO_LOCKING=n
@@ -11,6 +11,6 @@ include:
   - board: xiao_ble//zmk
     shield: totem_right totemist_dongle_peripheral_right
     artifact-name: totemist-dongle-right
-  - board: nice_nano_v2
+  - board: nice_nano//zmk
     shield: settings_reset
     artifact-name: totemist-dongle-settings_reset

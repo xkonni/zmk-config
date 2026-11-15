@@ -12,5 +12,5 @@ outputs:
   - ble
 url: https://keebart.com/products/piantor-wireless
 siblings:
-  - piantor_pro_bt_left
-  - piantor_pro_bt_right
+  - piantor_pro_bt_left//zmk
+  - piantor_pro_bt_right//zmk
