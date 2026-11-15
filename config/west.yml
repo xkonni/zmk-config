@@ -6,12 +6,10 @@ manifest:
       url-base: https://github.com/infely
     - name: xkonni
       url-base: https://github.com/xkonni
-    - name: englmaxi
-      url-base: https://github.com/englmaxi
   projects:
     - name: zmk
       remote: zmkfirmware
-      revision: v0.3.0
+      revision: main
       import: app/west.yml
     - name: nice-view-battery
       remote: infely
@@ -21,7 +19,7 @@ manifest:
       revision: main
     - name: zmk-dongle-display
       remote: xkonni
-      revision: zmk-v0.3
+      revision: main
     - name: zmk-keyboards-totem
       url: https://github.com/victorlucachi/zmk-keyboards-totem
       revision: main

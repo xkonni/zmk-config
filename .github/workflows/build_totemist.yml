@@ -5,6 +5,7 @@ on:
   push:
     branches:
       - dev
+      - zmk-main
     paths:
       - "build_totemist.yaml"
       - "config/behaviors.dtsi"
@@ -30,7 +31,7 @@ jobs:
   build:
     name: Build Totemist
     needs: draw
-    uses: zmkfirmware/zmk/.github/workflows/build-user-config.yml@v0.3
+    uses: zmkfirmware/zmk/.github/workflows/build-user-config.yml@main
     with:
       build_matrix_path: build_totemist.yaml
       archive_name: totemist-firmware
