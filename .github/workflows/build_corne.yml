@@ -5,6 +5,7 @@ on:
   push:
     branches:
       - dev
+      - zmk-main
     paths:
       - "boards/arm/corne_choc_pro/**"
       - "build_corne.yaml"
@@ -31,7 +32,7 @@ jobs:
   build:
     name: Build Corne
     needs: draw
-    uses: zmkfirmware/zmk/.github/workflows/build-user-config.yml@v0.3
+    uses: zmkfirmware/zmk/.github/workflows/build-user-config.yml@main
     with:
       build_matrix_path: build_corne.yaml
       archive_name: corne-firmware

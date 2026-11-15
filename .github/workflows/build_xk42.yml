@@ -5,6 +5,7 @@ on:
   push:
     branches:
       - dev
+      - zmk-main
     paths:
       - "boards/shields/xk42/**"
       - "build_xk42.yaml"
@@ -32,7 +33,7 @@ jobs:
   build:
     name: Build xk42
     needs: draw
-    uses: zmkfirmware/zmk/.github/workflows/build-user-config.yml@v0.3
+    uses: zmkfirmware/zmk/.github/workflows/build-user-config.yml@main
     with:
       build_matrix_path: build_xk42.yaml
       archive_name: xk42-firmware

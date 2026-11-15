@@ -21,7 +21,7 @@ permissions:
 jobs:
   build:
     name: Build Corne Dongle
-    uses: zmkfirmware/zmk/.github/workflows/build-user-config.yml@v0.3
+    uses: zmkfirmware/zmk/.github/workflows/build-user-config.yml@main
     with:
       build_matrix_path: build_corne_dongle.yaml
       archive_name: corne-dongle-firmware

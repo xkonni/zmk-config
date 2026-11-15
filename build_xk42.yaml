@@ -1,14 +1,14 @@
 ---
 include:
-  - board: nice_nano_v2
+  - board: nice_nano//zmk
     shield: xk42_left nice_view
     snippet: studio-rpc-usb-uart
     artifact-name: xk42-left-nice_view
-  - board: nice_nano_v2
+  - board: nice_nano//zmk
     shield: xk42_right nice_view_glyphs
     snippet: studio-rpc-usb-uart
     cmake-args: -DCONFIG_NICE_VIEW_WIDGET_PATTERN=4
     artifact-name: xk42-right-nice_glyphs
-  - board: nice_nano_v2
+  - board: nice_nano//zmk
     shield: settings_reset
     artifact-name: xk42-settings_reset

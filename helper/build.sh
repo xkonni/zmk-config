@@ -30,24 +30,24 @@ _build() {
 }
 case "$1" in
     "corne_left"|"corne_choc_pro_left")
-        _build "corne_choc_pro_left" "" "corne_left"
+        _build "corne_choc_pro_left//zmk" "" "corne_left"
         ;;
     "corne_right"|"corne_choc_pro_right")
-        _build "corne_choc_pro_right" "" "corne_right"
+        _build "corne_choc_pro_right//zmk" "" "corne_right"
         ;;
     "corne"|"corne_choc_pro")
-        _build "corne_choc_pro_left" "" "corne_left"
-        _build "corne_choc_pro_right" "" "corne_right"
+        _build "corne_choc_pro_left//zmk" "" "corne_left"
+        _build "corne_choc_pro_right//zmk" "" "corne_right"
         ;;
     "xk42_left"|"left")
-        _build "nice_nano_v2" "xk42_left nice_view" "xk42_left"
+        _build "nice_nano//zmk" "xk42_left nice_view" "xk42_left"
         ;;
     "xk42_right"|"right")
-        _build "nice_nano_v2" "xk42_right nice_view_glyphs" "xk42_right" "-DCONFIG_NICE_VIEW_WIDGET_PATTERN=4"
+        _build "nice_nano//zmk" "xk42_right nice_view_glyphs" "xk42_right" "-DCONFIG_NICE_VIEW_WIDGET_PATTERN=4"
         ;;
     "xk42")
-        _build "nice_nano_v2" "xk42_left nice_view" "xk42_left"
-        _build "nice_nano_v2" "xk42_right nice_view_glyphs" "xk42_right" "-DCONFIG_NICE_VIEW_WIDGET_PATTERN=4"
+        _build "nice_nano//zmk" "xk42_left nice_view" "xk42_left"
+        _build "nice_nano//zmk" "xk42_right nice_view_glyphs" "xk42_right" "-DCONFIG_NICE_VIEW_WIDGET_PATTERN=4"
         ;;
     *)
         echo "Unknown target: $1"
