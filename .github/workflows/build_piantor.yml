@@ -5,6 +5,7 @@ on:
   push:
     branches:
       - dev
+      - zmk-main
     paths:
       - "boards/arm/piantor_pro_bt/**"
       - "build_piantor.yaml"
@@ -32,7 +33,7 @@ jobs:
   build:
     name: Build Piantor Pro BT
     needs: draw
-    uses: zmkfirmware/zmk/.github/workflows/build-user-config.yml@v0.3
+    uses: zmkfirmware/zmk/.github/workflows/build-user-config.yml@main
     with:
       build_matrix_path: build_piantor.yaml
       archive_name: piantor-firmware
