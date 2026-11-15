@@ -38,4 +38,11 @@ config I2C
 config ZMK_MAX17048
     default y
 
+if ZMK_BLE
+
+config ZMK_BLE_EXPERIMENTAL_CONN
+    default y
+
+endif # ZMK_BLE
+
 endif # BOARD_PIANTOR_PRO_BT_LEFT || BOARD_PIANTOR_PRO_BT_RIGHT
