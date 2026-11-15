@@ -45,7 +45,7 @@ config SPI
     default y
 
 # Enable mouse/pointer movement (needed for mmv MOVE_* bindings)
-config ZMK_MOUSE
+config ZMK_POINTING
     default y
 
 endif
