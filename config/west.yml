@@ -16,7 +16,7 @@ manifest:
       revision: main
     - name: nice-view-glyphs
       remote: xkonni
-      revision: main
+      revision: lvgl9
     - name: zmk-dongle-display
       remote: xkonni
       revision: main
