@@ -1,0 +1,9 @@
+/*
+ * The upstream `zmk-keyboards-totem` module defines the Totem matrix kscan
+ * without the `wakeup-source` property, so the halves cannot wake from deep
+ * sleep (CONFIG_ZMK_SLEEP=y) on a key press. We cannot patch that external
+ * module, so this snippet re-opens `kscan0` and marks it as a wakeup source.
+ */
+&kscan0 {
+    wakeup-source;
+};
