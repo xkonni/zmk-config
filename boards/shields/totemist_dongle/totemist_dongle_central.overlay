@@ -42,44 +42,44 @@
         display-name = "Default";
         transform = <&default_transform>;
         keys //                     w    h    x    y  rot  rx  ry
-            = <&key_physical_attrs 100  100  100  200    0   0   0>  /* Q  */
-            , <&key_physical_attrs 100  100  200   75    0   0   0>  /* W  */
-            , <&key_physical_attrs 100  100  300    0    0   0   0>  /* E  */
-            , <&key_physical_attrs 100  100  400   50    0   0   0>  /* R  */
-            , <&key_physical_attrs 100  100  500  100    0   0   0>  /* T  */
-            , <&key_physical_attrs 100  100  725  100    0   0   0>  /* Y  */
-            , <&key_physical_attrs 100  100  825   50    0   0   0>  /* U  */
-            , <&key_physical_attrs 100  100  925    0    0   0   0>  /* I  */
-            , <&key_physical_attrs 100  100 1025   75    0   0   0>  /* O  */
-            , <&key_physical_attrs 100  100 1125  200    0   0   0>  /* P  */
-            , <&key_physical_attrs 100  100  100  300    0   0   0>  /* A  */
-            , <&key_physical_attrs 100  100  200  175    0   0   0>  /* S  */
-            , <&key_physical_attrs 100  100  300  100    0   0   0>  /* D  */
-            , <&key_physical_attrs 100  100  400  150    0   0   0>  /* F  */
-            , <&key_physical_attrs 100  100  500  200    0   0   0>  /* G  */
-            , <&key_physical_attrs 100  100  725  200    0   0   0>  /* H  */
-            , <&key_physical_attrs 100  100  825  150    0   0   0>  /* J  */
-            , <&key_physical_attrs 100  100  925  100    0   0   0>  /* K  */
-            , <&key_physical_attrs 100  100 1025  175    0   0   0>  /* L  */
-            , <&key_physical_attrs 100  100 1125  300    0   0   0>  /* ;  */
-            , <&key_physical_attrs 100  100    0  400    0   0   0>  /* LB5 (none) */
-            , <&key_physical_attrs 100  100  100  400    0   0   0>  /* Z  */
-            , <&key_physical_attrs 100  100  200  275    0   0   0>  /* X  */
-            , <&key_physical_attrs 100  100  300  200    0   0   0>  /* C  */
-            , <&key_physical_attrs 100  100  400  250    0   0   0>  /* V  */
-            , <&key_physical_attrs 100  100  500  300    0   0   0>  /* B  */
-            , <&key_physical_attrs 100  100  725  300    0   0   0>  /* N  */
-            , <&key_physical_attrs 100  100  825  250    0   0   0>  /* M  */
-            , <&key_physical_attrs 100  100  925  200    0   0   0>  /* ,  */
-            , <&key_physical_attrs 100  100 1025  275    0   0   0>  /* .  */
-            , <&key_physical_attrs 100  100 1125  400    0   0   0>  /* /  */
-            , <&key_physical_attrs 100  100 1225  400    0   0   0>  /* RB5 (none) */
-            , <&key_physical_attrs 100  100  350  475    0   0   0>  /* lalt */
-            , <&key_physical_attrs 100  100  460  460    0   0   0>  /* mo1 */
-            , <&key_physical_attrs 100  100  575  440    0   0   0>  /* space */
-            , <&key_physical_attrs 100  100  625  440    0   0   0>  /* ret */
-            , <&key_physical_attrs 100  100  740  460    0   0   0>  /* mo2 */
-            , <&key_physical_attrs 100  100  850  475    0   0   0>  /* ralt */
+            = <&key_physical_attrs 105 100   77 151 (-1000)  130  201> /* Q  */
+            , <&key_physical_attrs 105 100  196  60  (-400)  249  110> /* W  */
+            , <&key_physical_attrs 105 100  317   0     0    0    0> /* E  */
+            , <&key_physical_attrs 105 100  423  49     0    0    0> /* R  */
+            , <&key_physical_attrs 105 100  529  65     0    0    0> /* T  */
+            , <&key_physical_attrs 105 100  868  65     0    0    0> /* Y  */
+            , <&key_physical_attrs 105 100  974  49     0    0    0> /* U  */
+            , <&key_physical_attrs 105 100 1080   0     0    0    0> /* I  */
+            , <&key_physical_attrs 105 100 1200  60   400 1253  110> /* O  */
+            , <&key_physical_attrs 105 100 1319 152  1000 1372  202> /* P  */
+            , <&key_physical_attrs 105 100   95 250 (-1000)  147  300> /* A  */
+            , <&key_physical_attrs 105 100  203 160  (-400)  256  210> /* S  */
+            , <&key_physical_attrs 105 100  317 100     0    0    0> /* D  */
+            , <&key_physical_attrs 105 100  423 149     0    0    0> /* F  */
+            , <&key_physical_attrs 105 100  529 165     0    0    0> /* G  */
+            , <&key_physical_attrs 105 100  868 166     0    0    0> /* H  */
+            , <&key_physical_attrs 105 100  974 149     0    0    0> /* J  */
+            , <&key_physical_attrs 105 100 1080 100     0    0    0> /* K  */
+            , <&key_physical_attrs 105 100 1193 160   400 1246  210> /* L  */
+            , <&key_physical_attrs 105 100 1302 250  1000 1355  300> /* ;  */
+            , <&key_physical_attrs 105 100    0 323 (-1000)   52  373> /* LB5 (none) */
+            , <&key_physical_attrs 105 100  112 348 (-1000)  165  398> /* Z  */
+            , <&key_physical_attrs 105 100  210 260  (-400)  263  310> /* X  */
+            , <&key_physical_attrs 105 100  317 200     0    0    0> /* C  */
+            , <&key_physical_attrs 105 100  423 249     0    0    0> /* V  */
+            , <&key_physical_attrs 105 100  529 265     0    0    0> /* B  */
+            , <&key_physical_attrs 105 100  868 266     0    0    0> /* N  */
+            , <&key_physical_attrs 105 100  974 249     0    0    0> /* M  */
+            , <&key_physical_attrs 105 100 1080 200     0    0    0> /* ,  */
+            , <&key_physical_attrs 105 100 1186 260   400 1239  310> /* .  */
+            , <&key_physical_attrs 105 100 1285 349  1000 1338  399> /* /  */
+            , <&key_physical_attrs 105 100 1397 323  1000 1450  373> /* RB5 (none) */
+            , <&key_physical_attrs 105 100  393 371     0    0    0> /* lalt */
+            , <&key_physical_attrs 105 100  511 387  1500  563  437> /* mo1 */
+            , <&key_physical_attrs 105 100  619 432  3000  672  482> /* space */
+            , <&key_physical_attrs 105 100  778 432 (-3000)  831  482> /* ret */
+            , <&key_physical_attrs 105 100  886 387 (-1500)  939  437> /* mo2 */
+            , <&key_physical_attrs 105 100 1003 371     0    0    0> /* ralt */
             ;
     };
 };
