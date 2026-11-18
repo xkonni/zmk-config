@@ -24,5 +24,9 @@ manifest:
       url: https://github.com/victorlucachi/zmk-keyboards-totem
       revision: main
       path: modules/zmk-keyboards-totem
+    - name: zmk-keybeacon
+      remote: xkonni
+      revision: main
+      path: modules/zmk-keybeacon
   self:
     path: config
