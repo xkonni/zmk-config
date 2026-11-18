@@ -16,7 +16,7 @@
             flavor = "balanced";
             tapping-term-ms = <250>;
             quick-tap-ms = <175>;           // if a key is released within this time, it will always register as a tap (default 0, disabled)
-            require-prior-idle-ms = <200>;
+            require-prior-idle-ms = <150>;
             bindings = <&kp>, <&kp>;
             hold-trigger-key-positions = <KEYS_R THUMBS>;
             hold-trigger-on-release;        // Trigger hold on key release (instead of key press)
@@ -29,7 +29,7 @@
             flavor = "balanced";
             tapping-term-ms = <250>;
             quick-tap-ms = <175>;           // if a key is released within this time, it will always register as a tap (default 0, disabled)
-            require-prior-idle-ms = <200>;
+            require-prior-idle-ms = <150>;
             bindings = <&kp>, <&kp>;
             hold-trigger-key-positions = <KEYS_L THUMBS>;
             hold-trigger-on-release;        // Trigger hold on key release (instead of key press)
