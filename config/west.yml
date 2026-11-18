@@ -6,6 +6,8 @@ manifest:
       url-base: https://github.com/infely
     - name: xkonni
       url-base: https://github.com/xkonni
+    - name: caksoylar
+      url-base: https://github.com/caksoylar
   projects:
     - name: zmk
       remote: zmkfirmware
@@ -24,5 +26,9 @@ manifest:
       url: https://github.com/victorlucachi/zmk-keyboards-totem
       revision: main
       path: modules/zmk-keyboards-totem
+    - name: zmk-rgbled-widget
+      remote: caksoylar
+      revision: main
+      path: modules/zmk-rgbled-widget
   self:
     path: config

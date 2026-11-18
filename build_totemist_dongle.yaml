@@ -6,11 +6,11 @@ include:
     cmake-args: -DCONFIG_ZMK_STUDIO=y -DCONFIG_ZMK_STUDIO_LOCKING=n
     artifact-name: totemist-dongle-central
   - board: xiao_ble//zmk
-    shield: totem_left totemist_dongle_peripheral_left
+    shield: totem_left totemist_dongle_peripheral_left rgbled_adapter
     snippet: totem-wakeup
     artifact-name: totemist-dongle-left
   - board: xiao_ble//zmk
-    shield: totem_right totemist_dongle_peripheral_right
+    shield: totem_right totemist_dongle_peripheral_right rgbled_adapter
     snippet: totem-wakeup
     artifact-name: totemist-dongle-right
   - board: nice_nano//zmk

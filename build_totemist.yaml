@@ -1,11 +1,11 @@
 ---
 include:
   - board: xiao_ble//zmk
-    shield: totem_left
+    shield: totem_left rgbled_adapter
     snippet: studio-rpc-usb-uart totem-wakeup
     cmake-args: -DCONFIG_ZMK_STUDIO=y
   - board: xiao_ble//zmk
-    shield: totem_right
+    shield: totem_right rgbled_adapter
     snippet: totem-wakeup
   - board: xiao_ble//zmk
     shield: settings_reset
