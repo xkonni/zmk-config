@@ -1,14 +1,12 @@
-name: Build Piantor Pro BT Dongle firmware
+name: "Piantor Dongle: Build"
 
 on:
   workflow_dispatch:
-permissions:
-  contents: write
-
 jobs:
   build:
-    name: Build Piantor Dongle
-    uses: zmkfirmware/zmk/.github/workflows/build-user-config.yml@main
+    uses: ./.github/workflows/_build_keyboard.yml
     with:
-      build_matrix_path: build_piantor_dongle.yaml
-      archive_name: piantor-dongle-firmware
+      matrix: build_piantor_dongle.yaml
+      archive: piantor-dongle-firmware
+      keymap: piantor_pro_bt.keymap
+      keymap_artifact: piantor-dongle-keymap

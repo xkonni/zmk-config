@@ -1,0 +1,39 @@
+name: Reusable keyboard build
+
+on:
+  workflow_call:
+    inputs:
+      matrix:
+        required: true
+        type: string
+      archive:
+        required: true
+        type: string
+      keymap:
+        required: false
+        type: string
+      keymap_artifact:
+        required: false
+        type: string
+
+jobs:
+  draw:
+    if: inputs.keymap != ''
+    name: Draw keymap
+    uses: caksoylar/keymap-drawer/.github/workflows/draw-zmk.yml@main
+    permissions:
+      contents: read
+    with:
+      destination: artifact
+      artifact_name: ${{ inputs.keymap_artifact }}
+      fail_on_error: true
+      keymap_patterns: config/${{ inputs.keymap }}
+
+  build:
+    name: Build
+    needs: [draw]
+    if: always() && (needs.draw.result == 'success' || needs.draw.result == 'skipped')
+    uses: zmkfirmware/zmk/.github/workflows/build-user-config.yml@v0.3
+    with:
+      build_matrix_path: ${{ inputs.matrix }}
+      archive_name: ${{ inputs.archive }}

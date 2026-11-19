@@ -1,28 +1,11 @@
-name: Build xk42 Dongle firmware
+name: "xk42 Dongle: Build"
 
 on:
   workflow_dispatch:
-  push:
-    branches:
-      - dev
-    paths:
-      - "boards/shields/xk42/**"
-      - "boards/shields/xk42_dongle/**"
-      - "build_xk42_dongle.yaml"
-      - "config/behaviors.dtsi"
-      - "config/combos_split42.dtsi"
-      - "config/key-labels/split42.h"
-      - "config/xk42_dongle.*"
-      - "zephyr/**"
-    tags:
-      - "build"
-permissions:
-  contents: write
-
 jobs:
   build:
-    name: Build xk42 Dongle
-    uses: zmkfirmware/zmk/.github/workflows/build-user-config.yml@main
+    uses: ./.github/workflows/_build_keyboard.yml
     with:
-      build_matrix_path: build_xk42_dongle.yaml
-      archive_name: xk42-dongle-firmware
+      matrix: build_xk42_dongle.yaml
+      archive: xk42-dongle-firmware
+      draw_keymap: false

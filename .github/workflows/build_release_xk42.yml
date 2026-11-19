@@ -1,10 +1,10 @@
-name: Build and release xk42 firmware
+name: "xk42: Build & release"
 
 on:
   workflow_dispatch:
   push:
-    branches:
-      - main
+    branches: [main, v0.3, dev, dev-v0.3]
+    tags: ["build"]
     paths:
       - "boards/shields/xk42/**"
       - "build_xk42.yaml"
@@ -13,80 +13,25 @@ on:
       - "config/key-labels/split42.h"
       - "config/xk42.*"
       - "zephyr/**"
-    tags:
-      - "build"
+
 permissions:
   contents: write
 
 jobs:
-  draw:
-    name: Draw xk42 Keymap
-    uses: caksoylar/keymap-drawer/.github/workflows/draw-zmk.yml@main
-    if: github.ref == 'refs/heads/main' || github.ref == 'refs/tags/build'
-    permissions:
-      contents: read
-    with:
-      destination: artifact
-      artifact_name: xk42-keymap
-      fail_on_error: true
-      keymap_patterns: "config/xk42.keymap"
   build:
-    name: Build xk42
-    needs: draw
-    uses: zmkfirmware/zmk/.github/workflows/build-user-config.yml@v0.3
+    uses: ./.github/workflows/_build_keyboard.yml
     with:
-      build_matrix_path: build_xk42.yaml
-      archive_name: xk42-firmware
+      matrix: build_xk42.yaml
+      archive: xk42-firmware
+      draw_keymap: false
   release:
-    name: Release xk42
-    needs: [build, draw]
-    if: success() && (github.ref == 'refs/heads/main' || github.ref == 'refs/tags/build')
-    runs-on: ubuntu-latest
-    steps:
-      - name: Download artifacts
-        uses: actions/download-artifact@v4
-        with:
-          name: xk42-firmware
-          path: ./artifacts
-      - name: Download keymap artifact
-        uses: actions/download-artifact@v4
-        with:
-          name: xk42-keymap
-          path: ./keymap_artifacts
-      - name: Convert keymap SVG to PNG
-        run: |
-          sudo apt-get update
-          sudo apt-get install -y --no-install-recommends librsvg2-bin
-          for f in ./keymap_artifacts/*.svg; do
-            [ -f "$f" ] || continue
-            png="${f%.svg}.png"
-            rsvg-convert "$f" -o "$png"
-            echo "Converted $f -> $png"
-          done
-      - name: Generate build info
-        id: info
-        run: |
-          echo "timestamp=$(date +'%Y-%m-%d %H:%M:%S UTC')" >> $GITHUB_OUTPUT
-          echo "short_sha=${GITHUB_SHA:0:7}" >> $GITHUB_OUTPUT
-      - name: Delete existing tag
-        uses: dev-drprasad/delete-tag-and-release@v1.0
-        with:
-          tag_name: latest-xk42
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-        continue-on-error: true
-      - name: Create release
-        uses: softprops/action-gh-release@v1
-        with:
-          tag_name: latest-xk42
-          name: xk42 Latest Firmware
-          body: |
-            🔁 **xk42 Build**
-            Commit: ${{ steps.info.outputs.short_sha }}
-            Built: ${{ steps.info.outputs.timestamp }}
-            Install: flash left/right .uf2 files.
-            Keymap PNG: Download from release assets
-          files: |
-            ./artifacts/**/*.uf2
-            ./keymap_artifacts/**/*.png
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+    needs: build
+    if: success() && github.event_name == 'push' && (github.ref == 'refs/heads/main' || github.ref == 'refs/tags/build')
+    uses: ./.github/workflows/_release_keyboard.yml
+    with:
+      firmware_archive: xk42-firmware
+      release_tag: latest-xk42
+      release_name: xk42 Latest Firmware
+      release_description: xk42 Build
+    secrets:
+      GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

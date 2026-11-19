@@ -1,27 +1,12 @@
-name: Build Corne Choc Pro Dongle firmware
+name: "Corne Dongle: Build"
 
 on:
   workflow_dispatch:
-  push:
-    branches:
-      - dev
-    paths:
-      - "boards/arm/corne_choc_pro/**"
-      - "boards/shields/corne_choc_pro_dongle/**"
-      - "build_corne_dongle.yaml"
-      - "config/behaviors.dtsi"
-      - "config/key-labels/corne_choc_pro.h"
-      - "config/corne_choc_pro.*"
-      - "zephyr/**"
-    tags:
-      - "build"
-permissions:
-  contents: write
-
 jobs:
   build:
-    name: Build Corne Dongle
-    uses: zmkfirmware/zmk/.github/workflows/build-user-config.yml@main
+    uses: ./.github/workflows/_build_keyboard.yml
     with:
-      build_matrix_path: build_corne_dongle.yaml
-      archive_name: corne-dongle-firmware
+      matrix: build_corne_dongle.yaml
+      archive: corne-dongle-firmware
+      keymap: corne_choc_pro.keymap
+      keymap_artifact: corne-dongle-keymap

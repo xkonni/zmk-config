@@ -1,25 +1,13 @@
-name: Build Totemist Dongle firmware
+name: "Totemist Dongle: Build"
 
 on:
   workflow_dispatch:
-permissions:
-  contents: write
-
 jobs:
-  draw:
-    name: Draw Totemist Dongle Keymap
-    uses: caksoylar/keymap-drawer/.github/workflows/draw-zmk.yml@main
-    permissions:
-      contents: read
-    with:
-      destination: artifact
-      artifact_name: totemist-dongle-keymap
-      fail_on_error: true
-      keymap_patterns: "config/totem.keymap"
   build:
-    name: Build Totemist Dongle
     needs: draw
-    uses: zmkfirmware/zmk/.github/workflows/build-user-config.yml@main
+    uses: ./.github/workflows/_build_keyboard.yml
     with:
-      build_matrix_path: build_totemist_dongle.yaml
-      archive_name: totemist-dongle-firmware
+      matrix: build_totemist_dongle.yaml
+      archive: totemist-dongle-firmware
+      keymap: totem.keymap
+      keymap_artifact: totemist-dongle-keymap

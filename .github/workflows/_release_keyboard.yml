@@ -1,0 +1,73 @@
+name: Reusable keyboard release
+
+on:
+  workflow_call:
+    inputs:
+      firmware_archive:
+        required: true
+        type: string
+      keymap_artifact:
+        required: true
+        type: string
+      release_tag:
+        required: true
+        type: string
+      release_name:
+        required: true
+        type: string
+      release_description:
+        required: true
+        type: string
+    secrets:
+      GITHUB_TOKEN:
+        required: true
+
+jobs:
+  release:
+    name: Publish latest firmware
+    runs-on: ubuntu-latest
+    steps:
+      - name: Download firmware artifacts
+        uses: actions/download-artifact@v4
+        with:
+          name: ${{ inputs.firmware_archive }}
+          path: ./artifacts
+      - name: Download keymap artifact
+        uses: actions/download-artifact@v4
+        with:
+          name: ${{ inputs.keymap_artifact }}
+          path: ./keymap_artifacts
+      - name: Convert keymap SVGs to PNG
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y --no-install-recommends librsvg2-bin
+          for f in ./keymap_artifacts/*.svg; do
+            [ -f "$f" ] || continue
+            rsvg-convert "$f" -o "${f%.svg}.png"
+          done
+      - name: Record release metadata
+        id: metadata
+        run: |
+          echo "timestamp=$(date -u +'%Y-%m-%d %H:%M:%S UTC')" >> "$GITHUB_OUTPUT"
+          echo "short_sha=${GITHUB_SHA:0:7}" >> "$GITHUB_OUTPUT"
+      - name: Delete previous latest release
+        uses: dev-drprasad/delete-tag-and-release@v1.0
+        with:
+          tag_name: ${{ inputs.release_tag }}
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+        continue-on-error: true
+      - name: Publish latest release
+        uses: softprops/action-gh-release@v1
+        with:
+          tag_name: ${{ inputs.release_tag }}
+          name: ${{ inputs.release_name }}
+          body: |
+            ${{ inputs.release_description }}
+            Commit: ${{ steps.metadata.outputs.short_sha }}
+            Built: ${{ steps.metadata.outputs.timestamp }}
+            See the release assets for firmware and keymap image.
+          files: |
+            ./artifacts/**/*.uf2
+            ./keymap_artifacts/**/*.png
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

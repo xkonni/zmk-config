@@ -3,16 +3,18 @@
 Personal ZMK firmware configuration for five split keyboards, based on ZMK v0.3.
 Each keyboard is available in a standard BLE variant and a dongle variant (USB dongle
 as central, wireless peripherals). Dongle keymaps reference the regular keymap at
-build-time and are therefore always identical.
+build-time and are therefore always identical. Regular firmware builds run on pushes
+to `main`, `v0.3`, `dev`, and `dev-v0.3`; only `main` publishes releases. Dongle
+builds and releases remain manual.
 
 ## Keyboards
 
-| Keyboard | Keys | Regular | Dongle |
-|---|---|---|---|
-| **Piantor Pro BT** | 42-key split | [![](https://github.com/xkonni/zmk-config/actions/workflows/build_release_piantor.yml/badge.svg)](https://github.com/xkonni/zmk-config/actions/workflows/build_release_piantor.yml) | [![](https://github.com/xkonni/zmk-config/actions/workflows/build_release_piantor_dongle.yml/badge.svg)](https://github.com/xkonni/zmk-config/actions/workflows/build_release_piantor_dongle.yml) |
-| **Totemist** | 36-key split | [![](https://github.com/xkonni/zmk-config/actions/workflows/build_release_totemist.yml/badge.svg)](https://github.com/xkonni/zmk-config/actions/workflows/build_release_totemist.yml) | [![](https://github.com/xkonni/zmk-config/actions/workflows/build_release_totemist_dongle.yml/badge.svg)](https://github.com/xkonni/zmk-config/actions/workflows/build_release_totemist_dongle.yml) |
-| **xk42** | 42-key split | [![](https://github.com/xkonni/zmk-config/actions/workflows/build_release_xk42.yml/badge.svg)](https://github.com/xkonni/zmk-config/actions/workflows/build_release_xk42.yml) | [![](https://github.com/xkonni/zmk-config/actions/workflows/build_release_xk42_dongle.yml/badge.svg)](https://github.com/xkonni/zmk-config/actions/workflows/build_release_xk42_dongle.yml) |
-| **Corne Choc Pro BT** | 46-key split | [![](https://github.com/xkonni/zmk-config/actions/workflows/build_release_corne.yml/badge.svg)](https://github.com/xkonni/zmk-config/actions/workflows/build_release_corne.yml) | [![](https://github.com/xkonni/zmk-config/actions/workflows/build_release_corne_dongle.yml/badge.svg)](https://github.com/xkonni/zmk-config/actions/workflows/build_release_corne_dongle.yml) |
+| Keyboard | Keys | Build (main and test branches) | Build & release (main and `build` tag) | Last release workflow run | Dongle build (manual) |
+|---|---|---|---|---|---|
+| **Piantor Pro BT** | 42-key split | [Build](https://github.com/xkonni/zmk-config/actions/workflows/build_piantor.yml) | [Build & release](https://github.com/xkonni/zmk-config/actions/workflows/build_release_piantor.yml) | <!-- RELEASE-DATE:piantor -->—<!-- /RELEASE-DATE:piantor --> | [Build](https://github.com/xkonni/zmk-config/actions/workflows/build_piantor_dongle.yml) |
+| **Totemist** | 36-key split | [Build](https://github.com/xkonni/zmk-config/actions/workflows/build_totemist.yml) | [Build & release](https://github.com/xkonni/zmk-config/actions/workflows/build_release_totemist.yml) | <!-- RELEASE-DATE:totemist -->—<!-- /RELEASE-DATE:totemist --> | [Build](https://github.com/xkonni/zmk-config/actions/workflows/build_totemist_dongle.yml) |
+| **xk42** | 42-key split | [Build](https://github.com/xkonni/zmk-config/actions/workflows/build_xk42.yml) | [Build & release](https://github.com/xkonni/zmk-config/actions/workflows/build_release_xk42.yml) | <!-- RELEASE-DATE:xk42 -->—<!-- /RELEASE-DATE:xk42 --> | [Build](https://github.com/xkonni/zmk-config/actions/workflows/build_xk42_dongle.yml) |
+| **Corne Choc Pro BT** | 46-key split | [Build](https://github.com/xkonni/zmk-config/actions/workflows/build_corne.yml) | [Build & release](https://github.com/xkonni/zmk-config/actions/workflows/build_release_corne.yml) | <!-- RELEASE-DATE:corne -->—<!-- /RELEASE-DATE:corne --> | [Build](https://github.com/xkonni/zmk-config/actions/workflows/build_corne_dongle.yml) |
 | **Eyelash Sofle** | 58-key split | [![](https://github.com/xkonni/zmk-config/actions/workflows/build_release_eyelash_sofle.yml/badge.svg)](https://github.com/xkonni/zmk-config/actions/workflows/build_release_eyelash_sofle.yml) | |
 
 ## ZMK modules
