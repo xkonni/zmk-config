@@ -3,13 +3,13 @@
 Personal ZMK firmware configuration for five split keyboards, based on ZMK v0.3.
 Each keyboard is available in a standard BLE variant and a dongle variant (USB dongle
 as central, wireless peripherals). Dongle keymaps reference the regular keymap at
-build-time and are therefore always identical. Regular firmware builds run on pushes
-to `main`, `v0.3`, `dev`, and `dev-v0.3`; only `main` publishes releases. Dongle
-builds and releases remain manual.
+build-time and are therefore always identical. Regular builds run on pushes to `main`,
+`v0.3`, `dev`, and `dev-v0.3`; releases are published from `main`. Dongle builds are
+manual.
 
 ## Keyboards
 
-| Keyboard | Keys | Build (main and test branches) | Build & release (main and `build` tag) | Last release workflow run | Dongle build (manual) |
+| Keyboard | Keys | Build | Build & release | Last release workflow run | Dongle build (manual) |
 |---|---|---|---|---|---|
 | **Piantor Pro BT** | 42-key split | [Build](https://github.com/xkonni/zmk-config/actions/workflows/build_piantor.yml) | [Build & release](https://github.com/xkonni/zmk-config/actions/workflows/build_release_piantor.yml) | <!-- RELEASE-DATE:piantor -->—<!-- /RELEASE-DATE:piantor --> | [Build](https://github.com/xkonni/zmk-config/actions/workflows/build_piantor_dongle.yml) |
 | **Totemist** | 36-key split | [Build](https://github.com/xkonni/zmk-config/actions/workflows/build_totemist.yml) | [Build & release](https://github.com/xkonni/zmk-config/actions/workflows/build_release_totemist.yml) | <!-- RELEASE-DATE:totemist -->—<!-- /RELEASE-DATE:totemist --> | [Build](https://github.com/xkonni/zmk-config/actions/workflows/build_totemist_dongle.yml) |

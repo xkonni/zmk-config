@@ -4,7 +4,6 @@ on:
   workflow_dispatch:
 jobs:
   build:
-    needs: draw
     uses: ./.github/workflows/_build_keyboard.yml
     with:
       matrix: build_totemist_dongle.yaml

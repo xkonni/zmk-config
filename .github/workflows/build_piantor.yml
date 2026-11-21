@@ -1,39 +1,13 @@
-name: Build Piantor Pro BT firmware
+name: "Piantor: Build"
 
 on:
   workflow_dispatch:
-  push:
-    branches:
-      - dev
-      - zmk-main
-    paths:
-      - "boards/arm/piantor_pro_bt/**"
-      - "build_piantor.yaml"
-      - "config/behaviors.dtsi"
-      - "config/combos_split42.dtsi"
-      - "config/key-labels/split42.h"
-      - "config/piantor_pro_bt.*"
-      - "zephyr/**"
-    tags:
-      - "build"
-permissions:
-  contents: write
 
 jobs:
-  draw:
-    name: Draw Piantor Keymap
-    uses: caksoylar/keymap-drawer/.github/workflows/draw-zmk.yml@main
-    permissions:
-      contents: read
-    with:
-      destination: artifact
-      artifact_name: piantor-keymap
-      fail_on_error: true
-      keymap_patterns: "config/piantor_pro_bt.keymap"
   build:
-    name: Build Piantor Pro BT
-    needs: draw
-    uses: zmkfirmware/zmk/.github/workflows/build-user-config.yml@main
+    uses: ./.github/workflows/_build_keyboard.yml
     with:
-      build_matrix_path: build_piantor.yaml
-      archive_name: piantor-firmware
+      matrix: build_piantor.yaml
+      archive: piantor-firmware
+      keymap: piantor_pro_bt.keymap
+      keymap_artifact: piantor-keymap

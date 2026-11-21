@@ -55,25 +55,21 @@ jobs:
                   return "—"
               return datetime.fromisoformat(date.replace("Z", "+00:00")).strftime("%Y-%m-%d")
 
-          def latest_successful_run(workflow, branch):
-              runs = api(
-                  f"actions/workflows/{workflow}/runs?branch={branch}&status=success&per_page=100"
-              )["workflow_runs"]
-              for run in runs:
-                  if run.get("head_branch") == branch:
-                      return run
-              return None
-
           readme = Path("README.md")
           text = readme.read_text()
           updated = text
           for name, slug in keyboards:
               workflow = f"build_release_{slug}.yml"
-              runs = [
-                  latest_successful_run(workflow, branch)
-                  for branch in ("main", "build")
-              ]
-              runs = [run for run in runs if run]
+              runs = []
+              for branch in ("main", "build"):
+                  branch_runs = api(
+                      f"actions/workflows/{workflow}/runs?branch={branch}&status=success&per_page=100"
+                  )["workflow_runs"]
+                  latest_branch_run = next(
+                      (run for run in branch_runs if run.get("head_branch") == branch), None
+                  )
+                  if latest_branch_run:
+                      runs.append(latest_branch_run)
               latest = max(runs, key=lambda run: run["created_at"]) if runs else None
               date = fmt(latest["created_at"]) if latest else "—"
               marker = f"<!-- RELEASE-DATE:{slug} -->"

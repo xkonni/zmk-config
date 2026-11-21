@@ -2,6 +2,12 @@ name: "Corne: Build & release"
 
 on:
   workflow_dispatch:
+    inputs:
+      create_release:
+        description: Publish a release for this manual run
+        type: boolean
+        default: false
+    inputs:
   push:
     branches: [main, v0.3, dev, dev-v0.3]
     tags: ["build"]
@@ -26,7 +32,7 @@ jobs:
       keymap_artifact: corne-keymap
   release:
     needs: build
-    if: success() && github.event_name == 'push' && (github.ref == 'refs/heads/main' || github.ref == 'refs/tags/build')
+    if: success() && ((github.event_name == 'push' && github.ref == 'refs/heads/main') || (github.event_name == 'push' && github.ref == 'refs/tags/build') || (github.event_name == 'workflow_dispatch' && github.ref == 'refs/heads/main' && inputs.create_release))
     uses: ./.github/workflows/_release_keyboard.yml
     with:
       firmware_archive: corne-firmware

@@ -1,38 +1,13 @@
-name: Build Corne Choc Pro firmware
+name: "Corne: Build"
 
 on:
   workflow_dispatch:
-  push:
-    branches:
-      - dev
-      - zmk-main
-    paths:
-      - "boards/arm/corne_choc_pro/**"
-      - "build_corne.yaml"
-      - "config/behaviors.dtsi"
-      - "config/key-labels/corne_choc_pro.h"
-      - "config/corne_choc_pro.*"
-      - "zephyr/**"
-    tags:
-      - "build"
-permissions:
-  contents: write
 
 jobs:
-  draw:
-    name: Draw Corne Keymap
-    uses: caksoylar/keymap-drawer/.github/workflows/draw-zmk.yml@main
-    permissions:
-      contents: read
-    with:
-      destination: artifact
-      artifact_name: corne-keymap
-      fail_on_error: true
-      keymap_patterns: "config/corne_choc_pro.keymap"
   build:
-    name: Build Corne
-    needs: draw
-    uses: zmkfirmware/zmk/.github/workflows/build-user-config.yml@main
+    uses: ./.github/workflows/_build_keyboard.yml
     with:
-      build_matrix_path: build_corne.yaml
-      archive_name: corne-firmware
+      matrix: build_corne.yaml
+      archive: corne-firmware
+      keymap: corne_choc_pro.keymap
+      keymap_artifact: corne-keymap
