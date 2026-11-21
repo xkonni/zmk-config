@@ -8,4 +8,5 @@ jobs:
     with:
       matrix: build_xk42_dongle.yaml
       archive: xk42-dongle-firmware
-      draw_keymap: false
+      keymap: xk42.keymap
+      keymap_artifact: xk42-dongle-keymap

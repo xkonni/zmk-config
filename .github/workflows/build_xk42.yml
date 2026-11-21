@@ -9,4 +9,5 @@ jobs:
     with:
       matrix: build_xk42.yaml
       archive: xk42-firmware
-      draw_keymap: false
+      keymap: xk42.keymap
+      keymap_artifact: xk42-keymap

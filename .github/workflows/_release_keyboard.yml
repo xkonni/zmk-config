@@ -18,14 +18,13 @@ on:
       release_description:
         required: true
         type: string
-    secrets:
-      GITHUB_TOKEN:
-        required: true
 
 jobs:
   release:
     name: Publish latest firmware
     runs-on: ubuntu-latest
+    permissions:
+      contents: write
     steps:
       - name: Download firmware artifacts
         uses: actions/download-artifact@v4
@@ -54,7 +53,7 @@ jobs:
         uses: dev-drprasad/delete-tag-and-release@v1.0
         with:
           tag_name: ${{ inputs.release_tag }}
-          github_token: ${{ secrets.GITHUB_TOKEN }}
+          github_token: ${{ github.token }}
         continue-on-error: true
       - name: Publish latest release
         uses: softprops/action-gh-release@v1
@@ -70,4 +69,4 @@ jobs:
             ./artifacts/**/*.uf2
             ./keymap_artifacts/**/*.png
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_TOKEN: ${{ github.token }}

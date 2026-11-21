@@ -2,12 +2,6 @@ name: "Piantor: Build & release"
 
 on:
   workflow_dispatch:
-    inputs:
-      create_release:
-        description: Publish a release for this manual run
-        type: boolean
-        default: false
-    inputs:
   push:
     branches: [main, v0.3, dev, dev-v0.3]
     tags: ["build"]
@@ -33,7 +27,7 @@ jobs:
       keymap_artifact: piantor-keymap
   release:
     needs: build
-    if: success() && ((github.event_name == 'push' && github.ref == 'refs/heads/main') || (github.event_name == 'push' && github.ref == 'refs/tags/build') || (github.event_name == 'workflow_dispatch' && github.ref == 'refs/heads/main' && inputs.create_release))
+    if: success() && github.event_name == 'push' && (github.ref == 'refs/heads/main' || github.ref == 'refs/tags/build')
     uses: ./.github/workflows/_release_keyboard.yml
     with:
       firmware_archive: piantor-firmware
@@ -41,5 +35,3 @@ jobs:
       release_tag: latest-piantor
       release_name: Piantor Pro BT Latest Firmware
       release_description: Piantor Pro BT Build
-    secrets:
-      GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

@@ -2,12 +2,6 @@ name: "xk42: Build & release"
 
 on:
   workflow_dispatch:
-    inputs:
-      create_release:
-        description: Publish a release for this manual run
-        type: boolean
-        default: false
-    inputs:
   push:
     branches: [main, v0.3, dev, dev-v0.3]
     tags: ["build"]
@@ -29,15 +23,15 @@ jobs:
     with:
       matrix: build_xk42.yaml
       archive: xk42-firmware
-      draw_keymap: false
+      keymap: xk42.keymap
+      keymap_artifact: xk42-keymap
   release:
     needs: build
-    if: success() && ((github.event_name == 'push' && github.ref == 'refs/heads/main') || (github.event_name == 'push' && github.ref == 'refs/tags/build') || (github.event_name == 'workflow_dispatch' && github.ref == 'refs/heads/main' && inputs.create_release))
+    if: success() && github.event_name == 'push' && (github.ref == 'refs/heads/main' || github.ref == 'refs/tags/build')
     uses: ./.github/workflows/_release_keyboard.yml
     with:
       firmware_archive: xk42-firmware
+      keymap_artifact: xk42-keymap
       release_tag: latest-xk42
       release_name: xk42 Latest Firmware
       release_description: xk42 Build
-    secrets:
-      GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

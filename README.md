@@ -1,21 +1,21 @@
 # ZMK Config
 
-Personal ZMK firmware configuration for five split keyboards, based on ZMK v0.3.
+Personal ZMK firmware configuration for four split keyboards, based on ZMK v0.3.
 Each keyboard is available in a standard BLE variant and a dongle variant (USB dongle
 as central, wireless peripherals). Dongle keymaps reference the regular keymap at
 build-time and are therefore always identical. Regular builds run on pushes to `main`,
-`v0.3`, `dev`, and `dev-v0.3`; releases are published from `main`. Dongle builds are
-manual.
+`v0.3`, `dev`, and `dev-v0.3`; releases are published from `main` (and the explicit
+`build` tag). Manual runs of a **Build & release** workflow build only. Dongle builds
+are manual.
 
 ## Keyboards
 
-| Keyboard | Keys | Build | Build & release | Last release workflow run | Dongle build (manual) |
-|---|---|---|---|---|---|
-| **Piantor Pro BT** | 42-key split | [Build](https://github.com/xkonni/zmk-config/actions/workflows/build_piantor.yml) | [Build & release](https://github.com/xkonni/zmk-config/actions/workflows/build_release_piantor.yml) | <!-- RELEASE-DATE:piantor -->—<!-- /RELEASE-DATE:piantor --> | [Build](https://github.com/xkonni/zmk-config/actions/workflows/build_piantor_dongle.yml) |
-| **Totemist** | 36-key split | [Build](https://github.com/xkonni/zmk-config/actions/workflows/build_totemist.yml) | [Build & release](https://github.com/xkonni/zmk-config/actions/workflows/build_release_totemist.yml) | <!-- RELEASE-DATE:totemist -->—<!-- /RELEASE-DATE:totemist --> | [Build](https://github.com/xkonni/zmk-config/actions/workflows/build_totemist_dongle.yml) |
-| **xk42** | 42-key split | [Build](https://github.com/xkonni/zmk-config/actions/workflows/build_xk42.yml) | [Build & release](https://github.com/xkonni/zmk-config/actions/workflows/build_release_xk42.yml) | <!-- RELEASE-DATE:xk42 -->—<!-- /RELEASE-DATE:xk42 --> | [Build](https://github.com/xkonni/zmk-config/actions/workflows/build_xk42_dongle.yml) |
-| **Corne Choc Pro BT** | 46-key split | [Build](https://github.com/xkonni/zmk-config/actions/workflows/build_corne.yml) | [Build & release](https://github.com/xkonni/zmk-config/actions/workflows/build_release_corne.yml) | <!-- RELEASE-DATE:corne -->—<!-- /RELEASE-DATE:corne --> | [Build](https://github.com/xkonni/zmk-config/actions/workflows/build_corne_dongle.yml) |
-| **Eyelash Sofle** | 58-key split | [![](https://github.com/xkonni/zmk-config/actions/workflows/build_release_eyelash_sofle.yml/badge.svg)](https://github.com/xkonni/zmk-config/actions/workflows/build_release_eyelash_sofle.yml) | |
+| Keyboard | Keys | Build | Build & release | Dongle build |
+|---|---|---|---|---|
+| **Piantor Pro BT** | 42-key split | [![Build](https://github.com/xkonni/zmk-config/actions/workflows/build_piantor.yml/badge.svg)](https://github.com/xkonni/zmk-config/actions/workflows/build_piantor.yml) | [![Build & release](https://github.com/xkonni/zmk-config/actions/workflows/build_release_piantor.yml/badge.svg)](https://github.com/xkonni/zmk-config/actions/workflows/build_release_piantor.yml) | [![Build](https://github.com/xkonni/zmk-config/actions/workflows/build_piantor_dongle.yml/badge.svg)](https://github.com/xkonni/zmk-config/actions/workflows/build_piantor_dongle.yml) |
+| **Totemist** | 36-key split | [![Build](https://github.com/xkonni/zmk-config/actions/workflows/build_totemist.yml/badge.svg)](https://github.com/xkonni/zmk-config/actions/workflows/build_totemist.yml) | [![Build & release](https://github.com/xkonni/zmk-config/actions/workflows/build_release_totemist.yml/badge.svg)](https://github.com/xkonni/zmk-config/actions/workflows/build_release_totemist.yml) | [![Build](https://github.com/xkonni/zmk-config/actions/workflows/build_totemist_dongle.yml/badge.svg)](https://github.com/xkonni/zmk-config/actions/workflows/build_totemist_dongle.yml) |
+| **xk42** | 42-key split | [![Build](https://github.com/xkonni/zmk-config/actions/workflows/build_xk42.yml/badge.svg)](https://github.com/xkonni/zmk-config/actions/workflows/build_xk42.yml) | [![Build & release](https://github.com/xkonni/zmk-config/actions/workflows/build_release_xk42.yml/badge.svg)](https://github.com/xkonni/zmk-config/actions/workflows/build_release_xk42.yml) | [![Build](https://github.com/xkonni/zmk-config/actions/workflows/build_xk42_dongle.yml/badge.svg)](https://github.com/xkonni/zmk-config/actions/workflows/build_xk42_dongle.yml) |
+| **Corne Choc Pro BT** | 46-key split | [![Build](https://github.com/xkonni/zmk-config/actions/workflows/build_corne.yml/badge.svg)](https://github.com/xkonni/zmk-config/actions/workflows/build_corne.yml) | [![Build & release](https://github.com/xkonni/zmk-config/actions/workflows/build_release_corne.yml/badge.svg)](https://github.com/xkonni/zmk-config/actions/workflows/build_release_corne.yml) | [![Build](https://github.com/xkonni/zmk-config/actions/workflows/build_corne_dongle.yml/badge.svg)](https://github.com/xkonni/zmk-config/actions/workflows/build_corne_dongle.yml) |
 
 ## ZMK modules
 
@@ -57,14 +57,5 @@ manual.
 <summary>View Keymap</summary>
 
 <img src="https://github.com/xkonni/zmk-config/releases/download/latest-corne/corne_choc_pro.png" alt="Corne Keymap" />
-
-</details>
-
-## Eyelash Sofle
-
-<details>
-<summary>View Keymap</summary>
-
-<img src="https://github.com/xkonni/zmk-config/releases/download/latest-eyelash_sofle/eyelash_sofle.png" alt="Eyelash Sofle Keymap" />
 
 </details>
