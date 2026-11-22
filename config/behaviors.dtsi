@@ -22,14 +22,14 @@
             hold-trigger-on-release;        // Trigger hold on key release (instead of key press)
         };
 
-        /* A: rolling into letters stays A; only shifted punctuation triggers hold. */
+        /* A: left-hand rolls stay A; only shifted punctuation triggers hold. */
         hml_a: behavior_hold_tap_a {
             compatible = "zmk,behavior-hold-tap";
             #binding-cells = <2>;
             flavor = "balanced";
-            tapping-term-ms = <250>;
-            quick-tap-ms = <175>;
-            require-prior-idle-ms = <200>;
+            tapping-term-ms = <300>;
+            quick-tap-ms = <225>;
+            require-prior-idle-ms = <250>;
             bindings = <&kp>, <&kp>;
             hold-trigger-key-positions = <RB2 RB3 RB4>;
             hold-trigger-on-release;
