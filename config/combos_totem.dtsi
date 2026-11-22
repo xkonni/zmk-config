@@ -27,7 +27,8 @@
 
         combo_caps_word {
             timeout-ms = <50>;
-            key-positions = <LM4 RM4>;
+            require-prior-idle-ms = <300>;
+            key-positions = <LB4 RB4>;
             bindings = <&caps_word>;
         };
     };
