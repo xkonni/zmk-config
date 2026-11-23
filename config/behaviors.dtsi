@@ -119,12 +119,15 @@
             bindings = <&kp LALT>, <&mo 7>;
         };
 
-        /* X: tap X, double-tap one-shot Ctrl. */
-        td_x: tap_dance_x {
-            compatible = "zmk,behavior-tap-dance";
-            #binding-cells = <0>;
-            tapping-term-ms = <180>;
-            bindings = <&kp X>, <&sk LCTRL>;
+        /* One-shot modifier on hold, key on tap. Hold param is the modifier. */
+        ots: behavior_one_shot_tap {
+            compatible = "zmk,behavior-hold-tap";
+            #binding-cells = <2>;
+            flavor = "tap-preferred";
+            tapping-term-ms = <300>;
+            quick-tap-ms = <200>;
+            bindings = <&sk>, <&kp>;
+            hold-trigger-on-release;
         };
     };
 };
