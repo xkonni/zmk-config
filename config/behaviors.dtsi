@@ -6,6 +6,27 @@
  * Shared custom behaviors for all keyboards.
  * Each keymap must include the appropriate key-labels header before this file
  * to supply KEYS_L, KEYS_R and THUMBS for the HRM hold-trigger-key-positions.
+ *
+ * Timing and hold options used below:
+ *
+ *   tapping-term-ms
+ *     How long a key must be held before it becomes a hold on its own.
+ *     Lower = holds start sooner.
+ *   quick-tap-ms
+ *     A second press within this time after a tap is always a tap, even if held.
+ *     Only affects repeated presses.
+ *   require-prior-idle-ms
+ *     If another key was pressed within this time BEFORE the hold-tap key, the hold-tap key is forced to tap.
+ *     Higher = fewer accidental holds after typing.
+ *     Lower = holds possible sooner.
+ *   flavor
+ *     balanced: pressing and releasing another key while held makes it a hold.
+ *     tap-preferred: only the tapping term or a hold-trigger key makes it a hold.
+ *   hold-trigger-key-positions
+ *     Pressing one of these keys while the hold-tap key is held makes it a hold immediately.
+ *     Used for opposite-hand modifiers.
+ *   hold-trigger-on-release
+ *     Decide the hold on release of the hold-tap key, not on press.
  */
 
 / {
@@ -15,11 +36,24 @@
             #binding-cells = <2>;
             flavor = "balanced";
             tapping-term-ms = <250>;
-            quick-tap-ms = <175>;           // if a key is released within this time, it will always register as a tap (default 0, disabled)
-            require-prior-idle-ms = <150>;
+            quick-tap-ms = <175>;
+            require-prior-idle-ms = <200>;
             bindings = <&kp>, <&kp>;
             hold-trigger-key-positions = <KEYS_R THUMBS>;
-            hold-trigger-on-release;        // Trigger hold on key release (instead of key press)
+            hold-trigger-on-release;
+        };
+
+        /* A: left-hand rolls stay A; only shifted punctuation triggers hold. */
+        hml_a: behavior_hold_tap_a {
+            compatible = "zmk,behavior-hold-tap";
+            #binding-cells = <2>;
+            flavor = "balanced";
+            tapping-term-ms = <250>;
+            quick-tap-ms = <175>;
+            require-prior-idle-ms = <200>;
+            bindings = <&kp>, <&kp>;
+            hold-trigger-key-positions = <RM4 RB2 RB3 RB4>;
+            hold-trigger-on-release;
         };
 
         /* Right-hand HRMs. */
@@ -28,11 +62,11 @@
             #binding-cells = <2>;
             flavor = "balanced";
             tapping-term-ms = <250>;
-            quick-tap-ms = <175>;           // if a key is released within this time, it will always register as a tap (default 0, disabled)
-            require-prior-idle-ms = <150>;
+            quick-tap-ms = <175>;
+            require-prior-idle-ms = <200>;
             bindings = <&kp>, <&kp>;
             hold-trigger-key-positions = <KEYS_L THUMBS>;
-            hold-trigger-on-release;        // Trigger hold on key release (instead of key press)
+            hold-trigger-on-release;
         };
 
         /* ModTap slow, with high tapping term */
@@ -40,10 +74,10 @@
             compatible = "zmk,behavior-hold-tap";
             #binding-cells = <2>;
             flavor = "tap-preferred";
-            tapping-term-ms = <300>;        // how long a key needs to be pressed to register as a hold (default 200)
-            quick-tap-ms = <200>;           // if a key is released within this time, it will always register as a tap (default 0, disabled)
+            tapping-term-ms = <300>;
+            quick-tap-ms = <200>;
             bindings = <&kp>, <&kp>;
-            hold-trigger-on-release;        // Trigger hold on key release (instead of key press)
+            hold-trigger-on-release;
         };
 
         /* Layer tap with quick-tap-ms. */
@@ -51,8 +85,8 @@
             compatible = "zmk,behavior-hold-tap";
             #binding-cells = <2>;
             flavor = "tap-preferred";
-            tapping-term-ms = <200>;        // how long a key needs to be pressed to register as a hold (default 200)
-            quick-tap-ms = <175>;           // if a key is released within this time, it will always register as a tap (default 0, disabled)
+            tapping-term-ms = <200>;
+            quick-tap-ms = <175>;
             bindings = <&mo>, <&kp>;
         };
 
@@ -61,8 +95,8 @@
             compatible = "zmk,behavior-hold-tap";
             #binding-cells = <2>;
             flavor = "tap-preferred";
-            tapping-term-ms = <200>;        // how long a key needs to be pressed to register as a hold (default 200)
-            quick-tap-ms = <175>;           // if a key is released within this time, it will always register as a tap (default 0, disabled)
+            tapping-term-ms = <200>;
+            quick-tap-ms = <175>;
             bindings = <&kp>, <&kp>;
         };
 
@@ -71,10 +105,10 @@
             compatible = "zmk,behavior-hold-tap";
             #binding-cells = <2>;
             flavor = "tap-preferred";
-            tapping-term-ms = <300>;        // how long a key needs to be pressed to register as a hold (default 200)
-            quick-tap-ms = <200>;           // if a key is released within this time, it will always register as a tap (default 0, disabled)
+            tapping-term-ms = <300>;
+            quick-tap-ms = <200>;
             bindings = <&mo>, <&kp>;
-            hold-trigger-on-release;        // Trigger hold on key release (instead of key press)
+            hold-trigger-on-release;
         };
 
         /* LALT on tap/hold, momentary alt-number layer on double-tap/hold */
@@ -83,6 +117,17 @@
             #binding-cells = <0>;
             tapping-term-ms = <250>;
             bindings = <&kp LALT>, <&mo 7>;
+        };
+
+        /* One-shot modifier on hold, key on tap. Hold param is the modifier. */
+        ots: behavior_one_shot_tap {
+            compatible = "zmk,behavior-hold-tap";
+            #binding-cells = <2>;
+            flavor = "tap-preferred";
+            tapping-term-ms = <300>;
+            quick-tap-ms = <200>;
+            bindings = <&sk>, <&kp>;
+            hold-trigger-on-release;
         };
     };
 };
